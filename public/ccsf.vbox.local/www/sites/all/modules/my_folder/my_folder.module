@@ -1,0 +1,464 @@
+<?php
+/**
+*
+* 	@file
+*	A block module that creates a display of the contents of the "my folder" feature	
+*
+*/
+
+module_load_include('inc','my_folder','my_folder_actions');
+module_load_include('inc','my_folder','my_folder_remove_actions');
+module_load_include('inc','my_folder','my_folder_mail');
+module_load_include('inc','my_folder','my_folder_download');
+module_load_include('inc','my_folder','my_folder_download_all');
+
+/*
+* implements hook_block_info();
+*/
+function my_folder_block_info(){
+	$blocks=array();
+
+	$blocks['my_folder_widget']=array(//this is the delta in hook_block_view()
+		'info'=>t('My Folder Widget'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);
+	$blocks['my_folder_cart']=array(
+		'info'=>t('My Folder Cart'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);
+	return $blocks;
+}
+
+function my_folder_test($x,$y){
+	$test = $x . $y;
+	return $test;
+}
+/*
+*	implements hook_menu();
+*/
+function my_folder_menu(){
+	$items = array();
+	$items['my-folder/test/%/%'] = array(
+		'title'=>'Main my-folder page',
+		'description'=>'A callback to reset the mail function',
+		'page callback'=>'my_folder_test',
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+
+	$items['my-folder/reset'] = array(
+		'title'=>'Main my-folder page',
+		'description'=>'A callback to reset the mail function',
+		'page callback'=>'my_folder_mail_reset',
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/update'] = array(
+		'title'=>'Update My Folder Widget',
+		'description'=>'A callback function for updating the my folder widget when items are added',
+		'page callback'=>'my_folder_update',
+		'delivery callback'=>'my_folder_ajax_callback',
+		//'page arguments'=>array(2),
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/add/%/%']=array(
+		'title'=>'Add to My Folder',
+		'description'=>'A callback function for adding items to the folder',
+		'page callback'=>'my_folder_add',
+		'page arguments'=>array(2,3),// the arguments to pass are (type,id)
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/remove-all/%']=array(
+		'title'=>'Empty My Folder',
+		'description'=>'A callback function for removing all items from my folder',
+		'page callback'=>'my_folder_remove_all',
+		'page arguments'=>array(2),
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/remove-single/%/%']=array(
+		'title'=>'Remove a single item from my folder',
+		'description'=>'A callback function for removing a single item from my folder',
+		'page callback'=>'my_folder_remove_single',
+		'page arguments'=>array(2,3),
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/remove-single-kit-item/%/%/%']=array(
+		'title'=>'Remove starter kit item',
+		'description'=>'A callback that will remove a single item from a starter kit stored in my folder',
+		'page callback'=>'my_folder_remove_single_kit_item',
+		'page arguments'=>array(2,3,4),
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/remove-kit/%']=array(
+		'title'=>'Remove a whole starter kit',
+		'description'=>'A callback to remove one whole starter kit from my folder',
+		'page callback'=>'my_folder_remove_kit',
+		'page arguments'=>array(2),
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/mail/%']=array(
+		'title'=>'Mail my folder',
+		'description'=>'Callback function that mails the contents of my folder to the user',
+		'page callback'=>'my_folder_mail',
+		'page arguments'=>array(2),
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/mail-reset']=array(
+		'title'=>'Mail Success',
+		'description'=>'clear the success or fail status from session',
+		'page callback'=>'my_folder_mail_reset_status',
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	/*
+	$items['my-folder/mail-fail']=array(
+		'title'=>'Mail Fail',
+		'description'=>'clear fail status from session',
+		'page callback'=>'my_folder_mail_fail',
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	*/
+	$items['my-folder/rebuild']=array(
+		'title'=>'Rebuild My Cart',
+		'description'=>'Rebuild My Cart when returning from the email link',
+		'page callback'=>'my_folder_rebuild',
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/download-single/%/%']=array(//$type,$items
+		'title'=>'Download Function',
+		'description'=>'Download items as a zip file',
+		'page callback'=>'my_folder_download_single_type',
+		'page arguments'=>array(2,3),
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	$items['my-folder/download-all/%']=array(
+		'title'=>'Downlaod All',//all or all of a type
+		'description'=>'Download all items as a zip',
+		'page callback'=>'my_folder_download_all',
+		'page arguments'=>array(2),
+		'access arguments'=>array('access content'),
+		'type'=>MENU_CALLBACK,
+	);
+	return $items;
+}
+
+/*
+* implements hook_theme();
+*/
+function my_folder_theme(){
+	return array(
+		'my_folder_widget_theme'=>array(
+			'variables'=>array(
+				'myfolder'=>NULL,
+			),
+			'template'=>'my_folder_widget_block',
+		),
+
+		'my_folder_cart_theme'=>array(
+			'variables'=>array(
+				'myfolder'=>NULL,
+				'mail_status'=>NULL,
+			),
+			'template'=>'my_folder_cart_block',
+		),
+	);
+}
+
+/*
+* implements hook_block_view();
+*/
+function my_folder_block_view($delta=''){
+	
+	$block= array();
+	//$mail_status=my_folder_mail_get_status();
+
+	switch($delta){
+		case 'my_folder_widget':
+			//checks if their are items in the folder
+			if($widget_contents = my_folder_contents()){
+				$widget_set=true;
+			}else{
+				$widget_set=false;
+			}
+			$block['content']=theme('my_folder_widget_theme',array('set'=>$widget_set ,'myfolder'=>$widget_contents));
+			break;
+		case 'my_folder_cart':
+			//checks if their are items in the folder
+			if($cart_contents = my_folder_contents()){
+				$cart_set=true;
+				//dpm($cart_contents);
+			}else{
+				$cart_set=false;
+			}
+			$block['content']=theme('my_folder_cart_theme',array('set'=>$cart_set,'myfolder'=>$cart_contents));
+			break;
+
+        
+
+	}
+	return $block;
+}
+
+/*
+*	prepare variables for widget template file
+*/
+function my_folder_contents(){
+	
+	//this needs to get updated to include starter kits and docs
+	//$_SESSION index needs to match my new folder 
+
+	if( isset($_SESSION['folder']) ){
+		//dpm($_SESSION['folder']);
+		//set up the array
+		$myfolder=array(
+			'permit'=>array(),
+			'doc'=>array(),
+			'kit'=>array(),
+			'guide'=>array(),
+			'recent'=>array(),
+		);
+		//collect info for all permits
+		foreach($_SESSION['folder']['permit'] as $index){
+			
+			$node = my_folder_get_node($index);
+			$permit_item = my_folder_expand_permit_doc_or_guide($node,$index,'permit');
+			array_push($myfolder['permit'],$permit_item);
+		}
+		//collect info for all docs
+		foreach($_SESSION['folder']['doc'] as $index){
+			
+			$node = my_folder_get_node($index);
+			$doc_item = my_folder_expand_permit_doc_or_guide($node,$index,'doc');
+			array_push($myfolder['doc'],$doc_item);
+		}
+
+		//collect infor for all starter kits
+		foreach($_SESSION['folder']['kit'] as $index){
+			array_push($myfolder['kit'],$index);
+		}
+		
+		foreach($_SESSION['folder']['guide'] as $index){
+			$node = my_folder_get_node($index);
+			$guide_item = my_folder_expand_permit_doc_or_guide($node,$index,'guide');
+			array_push($myfolder['guide'],$guide_item);
+		}
+
+		//collect info for the recent queue
+		foreach( $_SESSION['folder']['recent'] as $index ){
+			
+			/*if( $index['type'] == 'permit' ){
+				$recentNode = my_folder_get_node($index['id']);
+				$recentNodeExpanded = my_folder_expand_permit_doc_or_guide($recentNode,$index['id']);
+				$index['title'] = $recentNodeExpanded[1];
+			}
+			if( $index['type'] == 'kit' ){
+				$recentKit = my_folder_get_starter_kit($index['id']);
+				foreach($recentKit as $key){
+					$recentKitTitle = $key->title;
+				}
+				$index['title'] = $recentKitTitle;
+			}
+			if( $index['type'] == 'doc' ){
+				//do the same as for the permit here
+			}
+			if( $index['type'] == 'guide' ){
+
+			}*/
+			
+			//the above code was made obsolete. All of that information is stored in session, no need to fetch it again.
+
+			array_push( $myfolder['recent'], $index );
+		}
+		return $myfolder;//big ol' array holding all the folder contents
+	}
+	
+}
+
+/*
+*	Helper function for my_folder_contents();
+*	get the nid, title and description for a permit, or document
+*/
+function my_folder_expand_permit_doc_or_guide($node,$index,$type){
+	
+	$permit_item=array();
+	foreach($node as $value){
+		//dpm($value);
+		array_push($permit_item,$value->nid);
+		array_push($permit_item,$value->title);
+	}
+
+	$description = my_folder_get_node_description($index,$type);
+	foreach($description as $value){
+		if($type=='permit'|| $type=='guide'){//this is because the description fields live on different db tables
+			array_push($permit_item,$value->field_description_value);
+		}else{
+			array_push($permit_item,$value->field_short_description_value);
+		}
+		
+	}
+	return $permit_item;
+}
+/*
+*	Helper function for my_folder_contents();
+*	get the nid, title and description for each item in an individual section of a starter kit	
+*/
+function my_folder_expand_starter_kit($kit,$type){
+	//dpm($kit);
+	$kit_full=array();
+
+	if(count($kit)==1){//if the kit is empty, it will only contain a single '0' 
+		//dpm('here');
+		return $kit_full;
+
+	}else{
+		
+		foreach($kit as $nid){
+			$kit_permit = array();
+			$node = my_folder_get_node($nid);
+			foreach($node as $item){
+				array_push($kit_permit,$item->nid);
+				array_push($kit_permit,$item->title);
+			}
+			$description = my_folder_get_node_description($nid,$type);
+			//having to check which type here because their description values are stored in different tables. This is handled by my_folder_get_node_description();
+			if($type=='guide'||$type=='permit'){
+				foreach($description as $value){
+					array_push($kit_permit,$value->field_description_value);
+
+					//dpm($value->field_description_value);
+				}
+			}
+			if($type=='doc'){
+				foreach($description as $value){
+					array_push($kit_permit,$value->field_short_description_value);
+
+					//dpm($value->field_description_value);
+				}
+			}
+			array_push($kit_full,$kit_permit);
+
+		}
+		
+		return $kit_full;
+	}
+}
+/*
+*	update the my folder widget
+*/
+function my_folder_update(){
+	
+	$contents = my_folder_contents();
+	$count = count($contents);	
+
+	$folder = '<h2 id="my-folder-count">'. $count .'</h2>' ;
+	$folder .= '<div id="my-folder-names">';
+
+	foreach($contents as $key){
+		//dpm($key);
+		$title = $key[0];
+		$nid = $key[1];
+		//dpm($title);
+		//dpm($nid);
+		$folder .= '<p class="my-folder-title" id="node-'. $nid .'">'. $title .'</p>';
+	}
+
+	$folder .= '</div>';
+
+
+
+	//dpm($folder);
+	return $folder;
+	
+}	
+
+function my_folder_ajax_callback($page_callback_result){
+	//dpm('ajax callback');
+	//dpm($page_callback_result);
+	print $page_callback_result;
+	//dpm(print drupal_render($page_callback_result));
+	drupal_page_footer();
+}
+
+///////////////// DB CALLS ////////////////
+/*
+*	checks if node exists
+*/
+function my_folder_check_node($nid){ 
+	$node = db_select('node','n')
+		->fields('n',array('nid','title'))
+		->condition('nid',$nid,'=')
+		->execute();
+	
+	if( $node->rowCount() > 0){
+		return TRUE;
+	}else{
+		return FALSE;
+	}
+	
+}
+
+/*
+*	checks if starter kit exists
+*/
+function my_folder_check_kit($id){
+	$kit = db_select('starter_kit','k')
+		->fields('k',array('id','title'))
+		->condition('id',$id,'=')
+		->execute();
+	if( $kit->rowCount() > 0 ){
+		return TRUE;
+	}else{
+		return FALSE;
+	}
+}
+
+/*
+*	returns a single node NID and Title
+*/
+function my_folder_get_node($nid){
+	$node = db_select('node','n')
+		->fields('n',array('nid','title'))
+		->condition('nid',$nid,'=')
+		->execute();
+	return $node;
+}
+/*
+*	returns a single nodes description text
+* 	the table queried coresponds to the table used by the field in the content type to store the description
+*/
+function my_folder_get_node_description($nid,$type){
+	
+	if($type=='doc'){
+		$desc = db_select('field_data_field_short_description','d')
+			->fields('d',array('entity_id','bundle','field_short_description_value'))
+			->condition('entity_id',$nid,'=')
+			->execute();
+	}
+	if($type=='guide' || $type=='permit'){
+		$desc = db_select('field_data_field_description','d')
+			->fields('d',array('entity_id','bundle','field_description_value'))
+			->condition('entity_id',$nid,'=')
+			->execute();
+	}
+	return $desc;
+}
+/*
+*	returns a whole starter kit
+*/
+function my_folder_get_starter_kit($id){
+	$kit = db_select('starter_kit','s')
+		->fields('s',array('id','title','f1','f2','f3','f4','f5','info'))
+		->condition('id',$id,'=')
+		->execute();
+	return $kit;
+}

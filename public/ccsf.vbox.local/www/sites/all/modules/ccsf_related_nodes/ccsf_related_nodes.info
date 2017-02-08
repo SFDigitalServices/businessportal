@@ -1,0 +1,5 @@
+name = CCSF Related Nodes
+description = Load Related items for the permit and document templates
+core = 7.x
+
+scripts[] = js/ccsf_related_nodes.js

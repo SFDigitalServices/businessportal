@@ -1,0 +1,795 @@
+//_footer.scss
+
+#footer{
+	width:100%;
+
+	a{
+		color:$global-section;
+	}
+
+
+}
+/*
+#ccsf-footer-wrap{
+	a:hover{
+		color:$grey-one !important;
+	}
+
+}
+*/
+.footer-inner{
+	@include max-width;
+	@include clearfix;
+}
+.ccsf-footer-top{
+	width:100%;
+	height:300px;
+	background:$grey-two;
+	@include clearfix;
+
+	.ccsf-footer-top-section{
+		width:22%;
+		float:left;
+		margin:22px 1.5% 0 1.5%;
+	}
+	.ccsf-footer-header{
+		@include font-f1($grey-eleven);
+	}
+	.ccsf-footer-copy{
+		@include font-f2($grey-eleven);
+	}
+	.ccsf-footer-assistance-links{
+		margin:20px 0 0 0;
+		a{
+			margin:5px 0 0 0;
+			display:block;
+			font-size:0.875em;
+		}
+	}
+	#ccsf-footer-twitter{
+		color:$grey-two;
+		h3{
+			position:relative;
+		}
+		a{
+			//float:left;
+			word-wrap:break-word;
+		}
+		h3:after{
+			@include icon-twitter(1.5em,$grey-eleven);
+			//display:block;
+			margin:0 0 0 15px;
+			top:0;
+			position:absolute;
+		}
+		.views-row{
+			span:nth-child(2){
+				//display:none;
+			}
+		}
+		.views-field-text{
+			@include clearfix;
+			.field-content{
+				@include font-f2($grey-eleven);
+			}
+			span,a{
+				//float:left;
+			}
+
+		}
+		
+		.views-field-created-time{
+			float:left;
+			clear:both;
+			margin:15px 0 0 0;
+			.field-content{
+				em,
+				span{
+					@include font-f2($grey-eleven);
+					color:$grey-eleven !important;
+
+				}
+				.paceholder{
+					@include font-f2($grey-eleven);
+					color:$grey-eleven !important;
+				}
+				
+
+			}
+		}
+		.views-field-screen-name{
+			//float:left;
+			clear:both;
+			//margin:17px 0 0 0;
+			.field-content{
+				@include font-f2($global-section);
+				color:$global-section;
+			}
+			.field-content:before{
+				@include icon-at(1em,$global-section);
+				display:block;
+				padding:0 5px 0 0;
+				float:left;
+			}
+			.field-content:hover:before{
+				color:$grey-eleven !important;
+			}
+		}
+
+	}
+	#ccsf-footer-share{
+		#ccsf-footer-share-links{
+			margin:20px 0 0 0;
+		}
+		a{
+			float:left;
+			display:block;
+			margin:0 20px 0 0;
+
+			p{
+				span:not(.notranslate) {
+					display:none;
+				}
+			}
+
+		}
+		.footer-twitter:before{
+			@include icon-twitter(1.5em,$global-section);
+		}
+		.footer-facebook:before{
+			@include icon-facebook(1.5em,$global-section);
+		}
+		.footer-linkedin:before{
+			@include icon-linkedin(1.5em,$global-section);
+		}
+	}
+
+}
+
+.ccsf-footer-middle{
+	width:100%;
+	height:110px;
+	background:$grey-three;
+
+	#ccsf-logos{
+		width:100%;
+		display:block;
+		justify-content:center;
+		align-items:center;
+		padding:40px 0 0 0;
+
+		a{
+			display:block;
+			float:left;
+			margin:0 3.5%;
+      text-indent: -999em;
+      font-size: 0;
+			p{
+				//@include font-f2($global-section);
+				display:none;
+			}
+		}
+	}
+	.mayor{
+		background:url('../images/graphics/icon_logo_mayor.png');
+		opacity:0.7;
+		background-size:100%;
+		//background-position:0 0;
+		background-repeat:no-repeat;
+		width:179px;
+		height:58px;
+		display:block;
+		@include transition-all(0.2s);
+	}
+	.mayor:hover{
+		display:block;
+		opacity:1;
+		background-size:100%;
+	}
+	.workforce{
+		display:block;
+		background:url('../images/graphics/icon_logo_economic.png');
+		opacity:0.7;
+		background-size:100%;
+		background-repeat:no-repeat;
+		width:193px;
+		height:51px;
+		@include transition-all(0.2s);
+	}
+	.workforce:hover{
+		display:block;
+		opacity:1;
+		background-size:100%;
+	}
+	.small-business{
+		display:block;
+		background:url('../images/graphics/icon_logo_small-business.png');
+		opacity:0.7;
+		background-size:100%;
+		background-position:0px 0px;
+		background-repeat:no-repeat;
+		width:188px;
+		height:59px;
+		@include transition-all(0.2s);
+	}
+	.small-business:hover{
+		display:block;
+		opacity:1;
+		background-position:0px 0px;
+		background-size:100%;
+	}
+	.technology{
+		display:block;
+		background:url('../images/graphics/icon_logo_technology.png');
+		opacity:0.7;
+		background-size:100%;
+		background-repeat:no-repeat;
+		width:180px;
+		height:58px;
+		@include transition-all(0.2s);
+	}
+	.technology:hover{
+		display:block;
+		opacity:1;
+		background-size:100%;
+	}
+}
+
+.ccsf-footer-bottom{
+	@include clearfix;
+	width:100%;
+	height:110px;
+	background:$grey-three;
+
+	#ccsf-footer-menu{
+		@include clearfix;
+		padding:24px 0 0 0;
+
+		width:100%;
+		ul{
+			@include clearfix;
+			//display:flex;
+			//justify-content:center;
+			width:575px;
+			margin:auto;
+			li{
+				float:left;
+				margin:0 13px 0 13px;
+				a{
+					@include font-f2($global-section);
+				}
+			}
+		}
+	}
+	#footer-date-section{
+		p{
+			float:left;
+		}
+	}
+	#ccsf-copyright,
+	#footer-date-section-wrap{
+		@include clearfix;
+		width:100%;
+	}
+	#ccsf_copyright{
+		margin:10px 0 0 0;
+	}
+	#footer-date-section{
+		@include clearfix;
+		//display:flex;
+		//justify-content:center;
+		width:100%;
+		margin:10px auto 0 auto;
+		p{
+			@include font-f2($font-grey); 
+			//margin:0 20px 0 20px;
+			width:33.33%;
+			text-align:center;
+		}
+	}
+  
+  .copyright-policy {
+    text-align:center;
+    padding: 20px 20px 0 20px;
+    @include font-f2($font-grey);
+  }
+}
+
+
+
+#ccsf-footer-wrap.home-color-section,
+#ccsf-footer-wrap.faq-color-section,
+#ccsf-footer-wrap.assistance-color-section,
+#ccsf-footer-wrap.contact-color-section{
+	a{
+		color:$global-section !important;
+	}
+	a:hover{
+		//color:$global-highlight-orange !important;
+		color:$grey-one !important;
+	}
+	#ccsf-footer-share-links{
+		p:before{
+			color:$global-section !important;
+		}
+		p:hover:before{
+			//color:$global-highlight-orange !important;
+			color:$grey-one !important;
+		}
+	}
+	#ccsf-footer-twitter{
+	}
+}
+#ccsf-footer-wrap.start-color-section,
+#ccsf-footer-wrap.kits-color-section{
+	a{
+		color:$start-section !important;
+	}
+	a:hover{
+		//color:$global-highlight-orange !important;
+		color:$grey-one !important;
+	}
+	#ccsf-footer-share-links{
+		p:before{
+			color:$start-section !important;
+		}
+		p:hover:before{
+			//color:$global-highlight-orange !important;
+			color:$grey-one !important;
+		}
+	}
+	.ccsf-footer-top {
+		#ccsf-footer-twitter {
+			.views-field-screen-name {
+				.field-content:before{
+					color:$start-section !important;
+				}
+				.field-content{
+					color:$start-section !important;
+				}
+			}
+		}
+	}
+}
+#ccsf-footer-wrap.manage-color-section{
+	a{
+		color:$manage-section !important;
+	}
+	a:hover{
+		//color:$global-highlight-orange !important;
+		color:$grey-one !important;
+	}
+	#ccsf-footer-share-links{
+		p:before{
+			color:$manage-section !important;
+		}
+		p:hover:before{
+			//color:$global-highlight-orange !important;
+			color:$grey-one !important;
+		}
+	}
+	.ccsf-footer-top {
+		#ccsf-footer-twitter {
+			.views-field-screen-name {
+				.field-content:before{
+					color:$manage-section !important;
+				}
+				.field-content{
+					color:$manage-section !important;
+				}
+			}
+		}
+	}
+}	
+#ccsf-footer-wrap.grow-color-section{
+	a{
+		color:$grow-section !important;
+	}
+	a:hover{
+		//color:$global-highlight-orange !important;
+		color:$grey-one !important;
+	}
+	#ccsf-footer-share-links{
+		p:before{
+			color:$grow-section !important;
+		}
+		p:hover:before{
+			//color:$global-highlight-orange !important;
+			color:$grey-one !important;
+		}
+	}
+	.ccsf-footer-top {
+		#ccsf-footer-twitter {
+			.views-field-screen-name {
+				.field-content:before{
+					color:$grow-section !important;
+				}
+				.field-content{
+					color:$grow-section !important;
+				}
+			}
+		}
+	}
+}
+#ccsf-footer-wrap.permit-color-section{
+	a{
+		color:$permits-section !important;
+	}
+	a:hover{
+		//color:$permits-highlight-blue !important;
+		color:$grey-one !important;
+	}
+	#ccsf-footer-share-links{
+		p:before{
+			color:$permits-section !important;
+		}
+		p:hover:before{
+			//color:$permits-highlight-blue !important;
+			color:$grey-one !important;
+		}
+	}
+	.ccsf-footer-top {
+		#ccsf-footer-twitter {
+			.views-field-screen-name {
+				.field-content:before{
+					color:$permits-section !important;
+				}
+				.field-content{
+					color:$permits-section !important;
+				}
+			}
+		}
+	}
+}
+#ccsf-footer-wrap.resource-color-section{
+	a{
+		color:$resources-section !important;
+	}
+	a:hover{
+		//color:$permits-highlight-blue !important;
+		color:$grey-one !important;
+	}
+	#ccsf-footer-share-links{
+		p:before{
+			color:$resources-section !important;
+		} 
+		p:hover:before{
+			//color:$permits-highlight-blue !important;
+			color:$grey-one !important;
+		}
+	}
+	.ccsf-footer-top {
+		#ccsf-footer-twitter {
+			.views-field-screen-name {
+				.field-content:before{
+					color:$resources-section !important;
+				}
+				.field-content{
+					color:$resources-section !important;
+				}
+			}
+		}
+	}
+}
+.document-type,
+.department-type{
+	a{
+		color:$resources-section !important;
+	}
+	a:hover{
+		//color:$permits-highlight-blue !important;
+		color:$grey-one !important;
+	}
+	#ccsf-footer-share-links{
+		p:before{
+			color:$resources-section !important;
+		} 
+		p:hover:before{
+			//color:$permits-highlight-blue !important;
+			color:$grey-one !important;
+		}
+	}
+	.ccsf-footer-top {
+		#ccsf-footer-twitter {
+			.views-field-screen-name {
+				.field-content:before{
+					color:$resources-section !important;
+				}
+				.field-content{
+					color:$resources-section !important;
+				}
+			}
+		}
+	}
+}
+.permit-type{
+	a{
+		color:$permits-section !important;
+	}
+	a:hover{
+		//color:$permits-highlight-blue !important;
+		color:$grey-one !important;
+	}
+	#ccsf-footer-share-links{
+		p:before{
+			color:$permits-section !important;
+		}
+		p:hover:before{
+			//color:$permits-highlight-blue !important;
+			color:$grey-one !important;
+		}
+	}
+	.ccsf-footer-top {
+		#ccsf-footer-twitter {
+			.views-field-screen-name {
+				.field-content:before{
+					color:$permits-section !important;
+				}
+				.field-content{
+					color:$permits-section !important;
+				}
+			}
+		}
+	}
+}
+
+
+///////////// MEDIA QUERIES //////////////////
+@media only screen and (max-width:1200px){
+	#footer-date-section{
+		width:100% !important;
+		p{
+			width:33.33% !important;
+			margin:0 !important;
+			text-align:center !important;
+		}
+	}
+}
+@media only screen and (max-width:1000px){
+
+}
+@media only screen and (max-width:950px){
+	#ccsf-footer-about{
+		display:none;
+	}
+	
+	.ccsf-footer-top{ 
+		.footer-inner{
+			width:95%;
+			margin:auto;
+			.ccsf-footer-top-section{
+				width:30%;
+				margin:50px 1.666% 0 1.666%;
+			}
+		}
+		#ccsf-footer-twitter {
+			.views-field-text {
+				.field-content{
+					font-size:1.2em;
+				}
+			}
+			.views-field-screen-name,
+			.views-field-created-time {
+				.field-content{
+					font-size:1.2em;
+				}
+			}
+		} 
+		.ccsf-footer-header{
+			font-size:1.35em;
+		}
+		.ccsf-footer-copy{
+			font-size:1.2em;
+		}
+		.ccsf-footer-assistance-links{
+			font-size:1.2em;
+		}
+		.ccsf-footer-share{
+			font-size:1.35em;
+
+		}
+		#ccsf-footer-share{
+			.footer-twitter:before{
+				font-size:2em;
+			}
+			.footer-facebook:before{
+				font-size:2em;
+			}
+			.footer-linkedin:before{
+				font-size:2em;
+			}
+		}
+	}
+	.ccsf-footer-middle{
+		height:75px;
+		#ccsf-logos{
+			margin:0;
+			padding:25px 0 0 0;
+		}
+		.mayor,
+		.workforce,
+		.small-business,
+		.technology{
+			width:19%;
+			margin:0 2.5% 0 2.5% !important;
+		}
+	}
+	.ccsf-footer-bottom{
+		height:90px;
+	}
+	#ccsf-footer-menu{
+		font-size:1.2em;
+	}
+	#ccsf-copyright{
+		font-size:1.2em;
+	}
+	
+}
+@media only screen and (max-width:700px){
+
+}
+@media only screen and (max-width:730px){
+	.ccsf-footer-top {
+		height:auto;
+		.footer-inner {
+			width:310px;
+			margin:auto;
+			@include clearfix;
+			.ccsf-footer-top-section{
+				float:left;
+				clear:both;
+				width:100%;
+				margin:20px 0 0 0;
+			}
+			#ccsf-footer-share{
+				margin-bottom:30px;
+			}
+
+		}
+		.ccsf-footer-assistance-links {
+			a{
+				font-size:1em;
+			}
+		}
+	}
+	.ccsf-footer-middle{
+		//display:none;
+		height:auto;
+		padding:0 0 15px 0;
+		.footer-inner{
+			height:auto;
+			width:310px;
+			margin:auto;
+		}
+		
+		#ccsf-logos{
+			display:block;
+
+			a {
+				opacity:1;
+        font-size:1.1em;
+        text-indent: 0;
+				p{
+					
+				}
+			}
+		}
+		.mayor,
+		.workforce,
+		.small-business,
+		.technology{
+			background:none;
+			width:auto;
+			float:none !important;
+			clear:both;
+			margin:0 0 10px 0 !important;
+			height:auto;
+		}
+		a{
+			p{
+				display:block !important;
+			}
+		}
+	}
+	.ccsf-footer-bottom{
+		height:auto;
+		#ccsf-footer-menu{
+			width:310px;
+			margin:auto;
+			padding:0;
+			ul{
+				display:block;
+				width:100%;
+				li{
+					float:left;
+					//clear:both;
+					margin:0 0 10px 0;
+					width:50%;
+				}
+			}
+			
+		}
+    
+    .copyright-policy {
+      text-align: left;
+      padding: 20px 0 20px 0;
+    }
+	}
+	#ccsf-copyright{
+		width:310px !important;
+		margin:0 auto 0 auto;
+		padding:0 0 10px 0;
+		
+	}
+	#footer-date-section{
+		width:310px;
+		margin:auto;
+		display:block !important;
+		p{
+			text-align:left !important;
+			width:100% !important;
+		}
+		#last-modified-date{
+			display:none;	
+		}
+		.copyrite,
+		#site-by{
+			float:left;
+			clear:both;
+			padding:0 0 10px 0 !important;
+		}
+		
+	}
+}
+@media only screen and (max-width:320px){
+	.ccsf-footer-top{
+		width:100%;
+		.footer-inner{
+			width:90%;
+		}
+	}
+	.ccsf-footer-middle{
+		width:100%;
+		.footer-inner{
+			width:90%;
+		}
+		
+	}
+	.ccsf-footer-bottom{
+		width:100%;
+		#ccsf-footer-menu{
+			width:90%;
+		}
+		#ccsf-copyright{
+			width:90% !important;
+		}
+	}
+}
+body.hide-download {  
+  #my-folder-sidebar-download,
+  .view-locator-result-download-cta,
+  .my-folder-permits-actions-download-all,
+  .my-folder-download-button,
+  .my-folder-starter-kit-actions-download-all,
+  .download-cta,
+  #permit-download-cta,
+  .permit-teaser-download-cta,
+  .required-items-download-cta, 
+  .doc-teaser-download-cta,
+  .resource-result-download-cta,
+  #doc-download-cta,
+  .kit-download-all,
+  .guide-download,
+  .kit-download {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width:650px){
+  .permit-teaser-folder-cta,
+  .view-locator-result-folder-cta,
+  .doc-teaser-folder-cta,
+  .resource-result-folder-cta {
+    display:none !important;
+  }
+}

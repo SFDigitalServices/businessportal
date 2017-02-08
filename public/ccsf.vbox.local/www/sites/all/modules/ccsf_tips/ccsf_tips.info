@@ -1,0 +1,4 @@
+name = CCSF Tips Section
+description = Creates a block for the Tips section
+core = 7.x
+

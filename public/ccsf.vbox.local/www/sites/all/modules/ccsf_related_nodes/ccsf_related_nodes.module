@@ -1,0 +1,61 @@
+<?php 
+/*
+* CCSF related nodes
+*/
+
+/*
+* implements hook_block_info();
+*/
+function ccsf_related_nodes_block_info(){
+	$blocks=array();
+
+	$blocks['ccsf_related_nodes_permit_block']=array(//this is the delta in hook_block_view()
+		'info'=>t('CCSF Related Permit Nodes'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);	
+	$blocks['ccsf_related_nodes_doc_block']=array(//this is the delta in hook_block_view()
+		'info'=>t('CCSF Related Doc Nodes'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);	
+	return $blocks;
+}
+
+
+
+/*
+* implements hook_theme();
+*/
+function ccsf_related_nodes_theme(){
+	return array(
+		'ccsf_related_nodes_permit_theme'=>array(
+			'variables'=>array(
+				'related'=>NULL,
+			),
+			'template'=>'ccsf_related_nodes_permit',
+		),
+		'ccsf_related_nodes_doc_theme'=>array(
+			'variables'=>array(
+				'related'=>NULL,
+			),
+			'template'=>'ccsf_related_nodes_doc',
+		),
+	);
+}
+
+/*
+* implements hook_block_view();
+*/
+function ccsf_related_nodes_block_view($delta=''){
+	//$footer = '';
+	$block = array();
+
+	switch($delta){
+		case 'ccsf_related_nodes_permit_block':
+			$block['content']=theme('ccsf_related_nodes_permit_theme');
+			break;
+		case 'ccsf_related_nodes_doc_block':
+			$block['content']=theme('ccsf_related_nodes_doc_theme');
+			break;
+	}
+	return $block;
+}

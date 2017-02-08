@@ -1,0 +1,8 @@
+name = Google Translate
+description = Creates a block inserts the Google Translate widget
+core = 7.x
+
+scripts[] = js/goog_cleanup.js
+
+
+

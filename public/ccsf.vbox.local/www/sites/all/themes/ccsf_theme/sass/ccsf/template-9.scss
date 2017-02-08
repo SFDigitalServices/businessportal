@@ -1,0 +1,297 @@
+// _template-9.scss
+
+.assistance-color-section{
+	.t9-banner-wrap{
+		height:520px;
+		width:100%;
+		background-color:$global-header;
+		padding:0;
+
+		.t9-banner{
+			@include max-width;
+			height:520px;
+			display:table;
+			position: relative;
+			.panels-flexible-region-template_9-center-inside{
+				display:table-cell;
+				vertical-align: middle;
+			}
+			.field-name-field-heading{
+				@include font-h1($font-black);
+				width:950px;
+				margin:0 auto 20px auto;
+				text-align:center;
+			}
+			.field-name-body{
+				@include font-body1($font-black);
+				width:950px;
+				margin:auto;
+				text-align:center;
+			}
+		}
+	}
+
+	.t9-options-wrap{
+		width:100%;
+		.t9-options{
+			@include max-width;
+			//height:600px;
+		}
+		.pane-node{
+			width:44%;
+			margin:0 3% 0 3%;
+			float:left;
+			padding:90px 0 120px 0;
+			.field-name-field-img{
+				margin:0 auto 25px auto;
+				width:64px;
+				height:64px;
+				img{
+					width:100%;
+					height:auto;
+				}
+			}
+			.field-name-field-heading{
+				@include font-h8($font-black);
+				margin:0 0 15px 0;
+			}
+			.field-name-body{
+				@include font-h3($font-grey);
+			}
+			.field-name-field-link{
+				margin:15px 0 0 0;
+				a{
+					@include font-h3($global-section);
+				}
+				a:hover{
+					color:$global-highlight-orange;
+				}
+				a:after{
+					//@include link-arrow($global-section,8px);
+					@include icon-triangle(1em,$global-section);
+					@include transition-all(0.2s);
+					position:relative;
+					top:1px;
+					margin:0 0 0 12px;
+				}
+				a:hover:after{
+					margin:0 0 0 15px;
+					color:$global-highlight-orange;
+				}
+			}
+		}
+	}
+
+	.t9-options-wrap:before{
+		@include arrow;
+		border-top-color:$global-header;
+	}
+
+	.t9-permits-wrap{
+		width:100%;
+		background-color:$grey-six;
+		min-height:520px;
+		
+
+		.t9-permits{
+			@include max-width;
+			min-height:520px;
+			display:table;
+			position:relative;
+			article{
+				padding:90px 0 120px 0;
+			}
+			.panels-flexible-region-template_9-permit_locator-inside{
+				display:table-cell;
+				vertical-align: middle;	
+			}
+			.field-name-field-img{
+				width:100px;
+				margin:0 auto 25px auto;
+				img{
+					width:100%;
+					height:auto;
+				}
+			}
+			.field-name-field-heading{
+				@include font-h1($font-black);
+				text-align: center;
+				width:950px;
+				margin:0 auto 20px auto;
+			}
+			.field-name-body{
+				@include font-body1($font-grey);
+				text-align: center;
+				width:950px;
+				margin:auto;
+
+			}
+			.field-name-field-link{
+				//color:$white;
+				margin:55px 0 0 0;
+				text-align: center;
+
+				a{
+					@include button($global-section,$white);
+					color:$white;
+					padding:19px 18px 18px 18px;
+					@include transition-all(0.2s);
+				}
+				a:hover{
+					background-color:$grey-four;
+					margin:0 0 0 3px;
+				}
+				a:after{
+					//@include link-arrow($white,2px);
+					@include icon-triangle(1.2em,$white);
+					@include transition-all(0.2s);
+					position:relative;
+					top:1px;
+					margin:0 0 0 12px;
+				}
+				a:hover:after{
+					margin:0 0 0 15px;
+				}
+			}
+		}
+	}
+}
+//////////// MEDIA QUERIES //////////////////
+@media only screen and (max-width:1120px){
+	.t9-banner-wrap{
+		.t9-banner{
+			.field-name-field-heading{
+				width:90% !important;
+			}
+			.field-name-body{
+				width:90% !important;
+			}
+		}
+	}
+	.assistance-color-section {
+		.t9-permits-wrap {
+			.t9-permits {
+				.field-name-field-heading{
+					width:90% !important;
+				}
+				.field-name-body{
+					width:90% !important;
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width:950px){
+	.t9-banner-wrap{
+		height:320px !important;
+		.t9-banner{
+			height:320px !important;
+		}
+	}
+	.assistance-color-section {
+		.t9-options-wrap {
+			.pane-node {
+				.field-name-field-link {
+					a:after{
+						border-top:5px solid transparent;
+						border-bottom:5px solid transparent;
+						margin:5px 0 0 12px;
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width:730px){
+	.t9-banner-wrap{
+		height:230px !important;
+		.t9-banner{
+			height:230px !important;
+			.field-name-field-heading{
+				font-size:2em;
+				margin:0 auto 5px auto !important;
+			}
+			.field-name-body{
+				font-size:1.5em;
+			}
+		}
+	}
+	
+	.t9-permits-wrap {
+		.t9-permits {
+			.field-name-field-link{
+				a{
+					font-size:1.25em;
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width:580px){
+
+	.assistance-color-section{
+		.t9-options-wrap:before{
+			border-top-width:15px;
+			border-left-width:15px;
+			border-right-width:15px;
+		}
+		.t9-options-wrap{
+			padding:0 0 30px 0;
+			.pane-node{
+				width:90% !important;
+				margin:0 5% 0 5%;
+				padding:30px 0 0 0;
+				.field-name-field-img{
+					display:none;
+				}
+				.field-name-field-heading{
+					padding:10px 0 0 0;
+				}
+			}
+		}
+		.t9-permits-wrap {
+			height:auto !important;
+			min-height:0;
+			.t9-permits {
+				height:auto !important;
+				min-height:0;
+				.panels-flexible-region-template_9-permit_locator-inside{
+					padding:30px 0 30px 0 !important;
+				}
+				article{
+					padding:10px 0 30px 0 !important;
+				}
+				.field-name-field-img{
+					display:none;
+				}
+				.field-name-field-heading{
+					text-align:left;
+					font-size:2em;
+				}
+				.field-name-body{
+					text-align:left;
+				}
+				.field-name-field-link{
+					float:left;
+					margin:55px 0 0 5%;
+				}
+			}
+		}
+	}
+
+}
+@media only screen and (max-width:500px){
+	.t9-banner-wrap{
+		//height:230px !important;
+		.t9-banner{
+			//height:230px !important;
+			.field-name-field-heading{
+				font-size:1.8em !important;
+				margin:0 auto 0 auto;
+			}
+			.field-name-body{
+				font-size:1.35em !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+<?php 
+/*
+* Module for creating the map block
+*/
+
+/*
+* implements hook_block_info();
+*/
+function ccsf_map_block_info(){
+	$blocks=array();
+
+	$blocks['ccsf_map_block']=array(//this is the delta in hook_block_view()
+		'info'=>t('CCSF Map'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);	
+	return $blocks;
+}
+
+
+
+/*
+* implements hook_theme();
+*/
+function ccsf_map_theme(){
+	return array(
+		'ccsf_map_theme'=>array(
+			'variables'=>array(
+				'map'=>NULL,
+			),
+			'template'=>'ccsf_map_block',
+		),
+	);
+}
+
+/*
+* implements hook_block_view();
+*/
+function ccsf_map_block_view($delta=''){
+	$footer = '';
+	$block = array();
+
+	switch($delta){
+		case 'ccsf_map_block':
+			$block['content']=theme('ccsf_map_theme');
+			break;
+	}
+	return $block;
+}

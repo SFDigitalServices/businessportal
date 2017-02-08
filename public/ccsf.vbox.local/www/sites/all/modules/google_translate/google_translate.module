@@ -1,0 +1,49 @@
+<?php 
+/*
+*
+*	@file
+*	creates a block that will insert the google translate widget 
+*
+*/
+
+/*
+*	Implements hook_block_info();
+*/
+function google_translate_block_info(){
+	$blocks=array();
+
+	$blocks['my_google_translate'] = array(//this is the delta in hook_block_view()
+		'info'=>t('Google Translate'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);
+	//dmp($blocks);
+	return $blocks;
+}
+
+/*
+*	Implements hook_theme();
+*/
+function google_translate_theme(){
+	return array(
+		'google_translate_theme'=>array(
+			
+			'template'=>'google_translate_block',
+		)
+	);
+}
+
+/*
+*	Implements hook_block_view();
+*/
+function google_translate_block_view($delta=''){
+	$block = array();
+
+	switch($delta){
+		case 'my_google_translate':
+			//$block['content'] = 'foobar';
+			$block['content']=theme('google_translate_theme');
+			break;
+	}
+	return $block;
+}
+

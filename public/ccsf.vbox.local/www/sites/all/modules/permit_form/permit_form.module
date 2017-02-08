@@ -1,0 +1,114 @@
+<?php
+/*
+*
+* Permit & Licence locator Form Submit Form
+* Should appear at the top of the Permit and Licence locator Page
+* Provides the form and submit handlers
+*
+*/
+
+/*
+* Implements hook_block_info();
+*/
+function permit_form_block_info(){
+	$blocks = array();
+	$blocks['permit_form']=array(
+		'info'=>t('Permit & Licence Locator Form'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);
+	return $blocks;
+}
+
+/*
+* Implements hook_bock_view();
+*/
+function permit_form_block_view($delta=''){
+	switch($delta){
+		case 'permit_form':
+			$block['subject']=t('Permit & Licence Locator');
+			$block['content']=drupal_get_form('permit_form_block_form');
+			break;
+	}
+	return $block;
+}
+
+function permit_form_block_form($form, &$form_state){
+
+	$form['select_all']=array(
+		'#prefix'=>'<div class="permit-locator-select-all">',
+		'#type'=>'button',
+		'#value'=>t('Select All'),
+		'#suffix'=>'</div>',
+	);
+	/*$form['deselect_all']=array(
+		'#prefix'=>'<div id="permit-locator-deselect-all">',
+		'#type'=>'button',
+		'#value'=>t('Deselect All'),
+		'#suffix'=>'</div>',
+	);*/
+	$form['add_selected']=array(
+		'#prefix'=>'<div class="permit-locator-add-selected">',
+		'#type'=>'button',
+		'#value'=>t('Add Selected'),
+		'#suffix'=>'</div>',	
+	);
+	$form['add_all']=array(
+		'#prefix'=>'<div class="permit-locator-add-all">',
+		'#type'=>'button',
+		'#value'=>t('Add All'),
+		'#suffix'=>'</div>',	
+	);
+	$form['download_selected']=array(
+		'#prefix'=>'<div class="permit-locator-dl-selected">',
+		'#type'=>'submit',
+        '#value'=>t('Download Selected'),
+        '#name'=>t('download_selected'),
+        '#submit'=>array('permit_form_download_submit'),
+        '#suffix'=>'</div>',
+	);
+	$form['download_all']=array(
+		'#prefix'=>'<div class="permit-locator-dl-all">',
+		'#type'=>'submit',
+        '#value'=>t('Download All'),
+        '#name'=>t('download_all'),
+        '#submit'=>array('permit_form_download_submit'),
+        '#suffix'=>'</div>',
+	);
+	$form['selected']=array(
+		'#prefix'=>'<div id="selected-permits">',
+		'#type'=>'textfield',
+		'#suffix'=>'</div>',
+	);
+	return $form;
+}
+
+function permit_form_download_submit(){
+	//if(!empty($_POST['download_all'])){
+	//	dpm($_POST);
+		
+	//}else if(!empty($_POST['download_selected'])){
+		$items = rtrim($_POST['selected'],',');
+		$files = explode(',',$items);
+		starter_kit_download($files);
+	//}
+
+	//}else{
+	//	dpm('not set');
+	//}
+	
+	//drupal_goto('locator');
+}
+//redirects to a new search page
+/*
+function permit_form_form_alter(&$form, &$form_state, $form_id) {
+  //dpm($form);
+  if ($form_id == 'views_exposed_form') {
+     //dpm('test');
+     $form['#action'] = 'locator';
+     //$form['#submit'][] = 'journey_form_submit_handler';
+  }
+}*/
+
+function journey_form_submit_handler(&$form, &$form_state) {
+  $form_state['redirect'] = 'locator';
+}

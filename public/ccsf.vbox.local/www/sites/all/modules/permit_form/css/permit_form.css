@@ -1,0 +1,40 @@
+.permit-control{
+	cursor:pointer;
+}
+.permit-control:hover{
+	color:red;
+}
+#edit-select{
+	display:none;
+}
+.vbo-select-all-markup{
+	display:none;
+}
+span.views-throbbing{ 
+	display: none !important;
+}
+a.views-throbbing{ 
+	padding-right: 0 !important;
+}
+.ajax-progress-throbber { 
+	display: none !important;
+}
+#selected-permits{
+	display:none !important;
+}
+/*.bef-tree-depth-1{
+	display:none;
+}*/
+.bef-toggle{
+	display:none;
+}
+
+/* Styels for autocomplete form */
+.ui-autocomplete-field-name{
+	display:none !important;
+}
+.ui-autocomplete-field-comment_count{
+	display:none !important; 
+}
+
+/* bulk operations */

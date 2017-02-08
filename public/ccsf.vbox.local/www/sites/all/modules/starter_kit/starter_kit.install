@@ -1,0 +1,38 @@
+<?php
+/**
+*
+* Install file for starter kit.
+* Sets up the needed tables 
+*
+*/
+
+
+//drupal 7 runs drupal_install_schema() automatically, not need to run hook_install() 
+function starter_kit_schema(){
+	$schema['starter_kit']=array(
+				
+	'description'=>'The base table for starter kits,',
+	//we'll give these fields more descriptive names when the final structure of the starter kits is setteled upon
+	'fields'=> array(
+		'id'	=> array('type'=>'int','unsigned'=>TRUE,'not null'=>TRUE),
+		'title' => array('type'=>'varchar','length'=>255,'not null'=>TRUE,'default'=>''),
+		'f1'	=> array('type'=>'varchar','length'=>255,'not null'=>TRUE,'default'=>'0'),//im purposfully using the string '0' here 
+		'f2'	=> array('type'=>'varchar','length'=>255,'not null'=>TRUE,'default'=>'0'),
+		'f3'	=> array('type'=>'varchar','length'=>255,'not null'=>TRUE,'default'=>'0'),
+		'f4'	=> array('type'=>'varchar','length'=>255,'not null'=>TRUE,'default'=>'0'),
+		'f5'	=> array('type'=>'varchar','length'=>255,'not null'=>TRUE,'default'=>'0'),
+		'info'	=> array('type'=>'varchar','length'=>510,'not null'=>TRUE,'default'=>''),
+	),
+	'primary key' => array('id'),
+	
+	);	
+	
+	return $schema;
+}
+
+function starter_kit_uninstall(){
+	//clean the blocks created out of the block table
+	$deleteblocks = db_delete('block')
+			->condition('module','starter_kit')
+			->execute();
+}

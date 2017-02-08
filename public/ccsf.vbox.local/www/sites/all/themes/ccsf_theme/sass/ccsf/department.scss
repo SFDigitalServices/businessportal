@@ -1,0 +1,263 @@
+// _department.scss
+.dept-page-wrap{
+	@include max-width;
+	position:initial !important;
+
+	.node-dept:after{
+		content:none !important; 
+	}
+}
+.dept-banner{
+	width:100%;
+	height:520px;
+	background:$resources-header;
+	//position:absolute;
+	left:0;
+
+	.dept-banner-contents{
+		@include max-width;
+		display:table;
+		position:relative;
+		height:520px;
+
+		.dept-banner-image{
+			//padding:202px 0 0 0;
+			//height: 519px;
+			display:table-cell;
+			vertical-align:middle;
+			//padding:0 6% 0 12%;
+			width:$sidebarwidth;
+
+			img{
+				width:125px;
+				//height:115px;
+				float:right;
+				margin:0 60px 0 0;
+			}
+			
+		}
+		.dept-banner-text{
+			display:table-cell;
+			vertical-align:middle;
+			//padding:0 12% 0 0;
+			width:$contentwidth;
+
+			.dept-name{
+				@include font-h6($font-black);
+				font-weight:100;
+				padding-bottom:10px;
+				margin:0 0 0 $content-margin;
+			}
+			.dept-description{
+				@include font-body4($font-black);
+				padding-bottom:30px;
+				margin:0 0 0 $content-margin;
+			}
+			.dept-banner-cta{
+				background:$resources-section;
+				padding:1em;
+				margin:0 20px 0 $content-margin;
+				float:left;
+				color:$white;
+				@include transition-all(0.2s);
+			}
+			.dept-banner-cta:hover{
+				background-color:$grey-four;
+			}
+			.dept-banner-cta:after{
+				font-family:$icon-font;
+				padding:0 0 0 1em;
+			}
+			#dept-apply-cta:after{
+				content:'\eea6';
+			}
+			#dept-download-cta:after{
+				
+				content:'\e98e';
+			}
+			#dept-folder-cta:after{
+				content:'\e855';
+			}
+		}
+	}
+}
+
+.dept-full-content-wrap{
+	@include max-width;
+	@include clearfix;
+	//padding:520px 0 0 0;
+}
+.dept-full-sidebar{
+	width:$sidebarwidth;
+	float:left;	
+	margin:90px 0 0 0;
+	h3{
+		@include font-s1($font-black);
+		text-transform:uppercase;
+		margin:0 0 10px 0;
+	}
+	
+	p{
+		color:$font-grey;
+	}
+	a{
+		p{
+			color:$resources-section;
+		}
+	}
+}
+.dept-full-main{
+	width:$contentwidth;
+	float:right;
+	margin:90px 0 120px 0;
+	.dept-main-information{
+		padding:0 0 0 $content-margin;
+	}
+	h2{
+		@include font-h8($font-black);
+		margin:0;
+	}	
+	h3{
+		@include font-body2($permits-highlight-blue);
+		margin:35px 0 10px 0;
+		font-weight:600;	
+	}
+	p{
+		@include font-body3($font-grey);
+		
+		margin:0 0 40px 0;
+
+	}
+	a{
+		color:$resources-section;
+		float:left;
+		p{
+			color:$resources-section;	
+		}
+	}
+	a:hover{
+		p{
+			color:$permits-highlight-blue !important;
+		}
+	}
+}
+.dept-page-wrap{
+
+	#block-views-related-depts-block{
+		//@include max-width;
+		width:$contentwidth;
+		float:right;
+		@include clearfix;
+		.view-related-depts,
+		.block-title
+		{
+			@include clearfix;
+			//width:$contentwidth;
+			//float:right;
+		}
+		.views-row{
+			width:41%;
+			margin:0 3% 3% 0;
+			padding:3%;	
+			float:left;
+			background:$grey-seven;
+		}
+	}
+}
+
+//////////// MEDIA QUERIES //////////////////
+@media only screen and (max-width:1200px){
+	.dept-banner{
+		height:auto;
+		
+			.dept-banner-contents{
+				padding:60px 0 60px 0;
+				@include clearfix;
+				height:auto;
+				width:90%;
+				margin:auto;
+			}	
+		
+	}
+	.dept-full-content-wrap{
+		width:90%;
+	}
+}
+@media only screen and (max-width:950px){
+	.dept-banner{
+			.dept-banner-contents{
+				padding:50px 0 50px 0;
+				.dept-banner-text {
+					.dept-banner-cta{
+						font-size:1.25em;
+					}
+				}
+			}
+			.dept-banner-image {
+				img{
+					width:90px !important;
+					float:none !important;
+					margin:auto !important;
+					display:block;
+				}
+			}
+			.dept-banner-text {
+				.dept-name{
+					padding-bottom:0 !important;
+				}
+				.dept-description{
+					padding-bottom:10px !important;
+				}
+			}
+	}
+	.dept-full-sidebar {
+		h3{
+			font-size:1.2em;
+		}
+	}
+}
+// /.dept-banner .dept-banner-contents 
+@media only screen and (max-width:730px){
+	.dept-banner{
+			.dept-banner-contents{
+				padding:50px 0 50px 0;
+				width:100%;
+				.dept-banner-image {
+						display:none;
+				}
+				.dept-banner-text{
+					width:90%;
+					h1{
+						margin:0 !important;
+					}
+					.dept-description{
+						margin:0 !important;
+					}
+					#dept-visit-cta{
+						margin:0 !important;
+					}
+				}
+
+			}
+	}
+	.dept-full-sidebar {
+		width:100%;
+		margin:30px 0 0 0;
+	}
+	.dept-full-main{
+		width:100%;
+		margin:20px 0 30px 0;
+		.dept-main-information{
+			padding:0;
+			h3{
+				margin:15px 0 10px 0;
+			}
+		}
+	}
+}
+@media only screen and (max-width:580px){
+
+}
+@media only screen and (max-width:320px){
+	
+}

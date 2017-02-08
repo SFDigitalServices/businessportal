@@ -1,0 +1,185 @@
+//_futurescape.scss
+.page-content{
+   // margin:0 0 30px 0;
+}
+
+
+/* Styling page content */
+.page-content p,
+.page-content li {
+    /*font-family: "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 1.1875em;
+    line-height: 1.4;
+    color: #666;*/
+    @include font-body2($font-grey);
+}
+
+.page-content p {
+    margin-bottom: 20px;
+}
+
+.page-content .pane-title {
+    /*font-family: 'Droid Serif', serif;
+    font-size: 2.75em;
+    line-height: 1.4;
+    color: #222;
+    font-weight:400;*/
+    @include font-h6($white);
+    margin: 0 0 15px 0;
+    padding: 0;
+}
+.page-content h3 {
+   /*font-family: 'Droid Serif', serif;
+    font-size:1.875em;
+    line-height: 1.5;
+    color: #222;
+    font-weight:400;*/
+    @include font-h8($font-grey);
+    margin: 0 0 25px 0; padding: 0;
+}
+.page-content h4 {
+    font-size: 1.0625em;
+    line-height: 1.4em;
+    color: #ff9900;
+    font-weight: 600;
+    font-family:"Helvetica", Helvetica, Arial, sans-serif;
+    //@include font-h9($font-grey);
+    margin: 30px 0 5px 0; padding: 0;
+}
+.page-content .body-4 {
+    /*font-size:1.5em;
+    line-height: 1.4;
+    color: #222;*/
+    @include font-body4($font-grey);
+    margin: 0; padding: 0;
+}
+.page-content hr {
+    height: 1px;
+    padding: 0;
+    margin: 35px 0 30px 0;
+    color: #ddd;
+    background: #ddd;
+    border:none;
+}
+.page-content .hr-4 {
+    height: 4px;
+    padding: 0;
+    margin: 40px 0;
+    color: #222;
+    background: #222;
+    border:none;
+}
+
+.page-content ul, .page-content ol {
+    margin:0 0 20px 20px;
+}
+.page-content ol {
+    padding-left: 25px;
+}
+.page-content ul li {
+    padding-left: 30px;
+}
+.page-content ol li,
+.page-content ul li {
+  /*  margin-bottom: 5px;*/
+
+}
+.page-content ol li:before,
+.page-content ul li:before{
+    color:#ff9900;
+}
+
+.page-content p.note {
+    padding: 15px 20px;
+    margin:40px 0 40px 0;
+    background: #efdbff;
+    font-size:15px;
+}
+.page-content p.note .note-heading {
+    font-size: 15px;
+    line-height: 1.4;
+    color: #222;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+/////// my additions /////
+.note-heading:before{
+    @include icon-attention(1em,$global-highlight-orange);
+    display:inline-block;
+    margin:0 7px 0 0;
+}
+.section-start{
+    .note-heading:before{
+        color:$start-section !important;
+    }  
+}
+.section-manage {
+    .note-heading:before{
+        color:$manage-section !important;
+    }
+}
+.section-grow{
+    .note-heading:before{
+        color:$grow-section !important;
+    }
+}
+.page-content-go{
+    margin-bottom:0;
+    a:after{
+        @include icon-triangle(1em,$global-section);
+        display:inline-block;
+        margin:0 0 0 12px;
+        @include transition-all(0.2s);
+    }
+    a:hover:after{
+        margin:0 0 0 15px;
+        color:$global-highlight-orange !important;
+    }
+}
+/*
+.t5-menu-wrap {
+    padding: 73px 0 0 0 !important;
+    
+}
+.t5-menu-wrap h2 {
+    margin: 0 0 20px 0;
+    font-size:.875em;
+    text-transform:uppercase;
+    font-weight:600;
+    line-height: 1.2;
+}
+.t5-menu-wrap .menu li {
+    margin: 0 0 5px 0;
+    font-size: 1.125em;
+    line-height: 1.6;
+}
+.t5-menu-wrap .menu li a:hover,
+.t5-menu-wrap .menu li.active-trail a {
+    color: #222;
+}
+.t5-menu-wrap .menu li.active-trail a {
+    font-size: 16px;
+}*/
+@media only screen and (max-width:950px){
+    
+    .page-content p, 
+    .page-content li,
+    .page-content h4{
+       font-size:1.35em; 
+    }
+    .page-content h3{
+        margin:0 0 15px 0;
+    }
+    .page-content hr{
+        margin:20px 0 20px 0;
+    }
+    .page-content .hr-4{
+        margin:20px 0;
+    }
+}
+@media only screen and (max-width:450px){
+    .page-content p.note {
+        margin:35px 0 35px 0;
+    }
+
+}

@@ -1,0 +1,9 @@
+name = CCSF Map
+description = Creates a block for the draggable map timeline feature
+core = 7.x
+
+scripts[] = js/map.js
+scripts[] = js/jquery.nicescroll.js
+
+stylesheets[all][] = css/map.css
+stylesheets[all][] = css/animation.css

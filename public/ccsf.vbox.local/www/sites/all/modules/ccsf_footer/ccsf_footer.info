@@ -1,0 +1,9 @@
+name = CCSF Footer
+description = Creates a custom block for the footer. Contains social functionality. 
+core = 7.x
+
+
+scripts[] = js/ccsf_footer.js
+scripts[] = js/ccsf_footer_twitter.js
+
+stylesheets[all][] = css/footer_block.css

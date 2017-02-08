@@ -1,0 +1,89 @@
+// _variables.scss
+
+
+/* Colors */
+
+/* Global */
+$global-note:#e3f8ff;
+$global-header:#c9f1ff;
+$global-section:#0d84e9;
+$global-highlight-orange:#ff9900;
+$permits-highlight-blue:#00bed5;
+
+/* Start */ 
+$start-note:#e0fbf8;
+$start-header:#c3f7f2;
+$start-section:#00bed5;
+
+/* Manage */
+$manage-note:#f3fbd9;
+$manage-header:#e7f8b6;
+$manage-section:#99cd00;
+
+/* Grow */
+$grow-note:#f7edff;
+$grow-header:#efdcff;
+$grow-section:#b85ed5;
+
+/* Permits */
+$permits-note:#ffede6;
+$permits-header:#ffdbcd;
+$permits-section:#ff6627;
+
+
+/* Resources */
+$recources-note:#fff6d6;
+$resources-header:#ffedb0;
+$resources-section:#ff9900;
+
+
+$blue: #0072BD;
+$link-color:#0072BD;
+$orange:#E86A47;
+$white:#ffffff;
+$light-blue:#D3ECF4;
+$light-blue-two:#CEF2FE;
+$cream:#FFF3DE;
+$light-green:#DEF6CC;
+$green:#2C9F3E;
+
+$grey-one:#AAAAAA;
+$grey-two:#333333;
+$grey-three:#2D2D2D;
+$grey-four:#444444;
+$grey-five:#EEEEEE;
+$grey-six:#F5F5F5;
+$grey-seven:#F7F7F7;
+$grey-eight:#CCCCCC;
+$grey-nine:#DDDDDD;
+$grey-ten:#fbfbfb;
+$grey-eleven:#b3b3b3;
+$grey-twelve:#888888;
+
+$font-black:#222222;
+$font-grey:#666666;
+
+/* Fonts */
+$font-one: "Helvetica", Helvetica, Arial, sans-serif; 
+$font-two: 'Droid Serif', serif;
+$icon-font: 'fontello';
+
+/* Font Sizes */
+$fourteen:.857em;
+$sixteen:1em;
+$eighteen:1.125em;
+
+/* Font Colors */
+$font-grey:#878787;
+
+/* Doc Width */
+//$max-width:1134px;
+$max-width:1074px;
+
+/* Sidebar Widths */
+$sidebarwidth : 25%;
+$contentwidth : 75%;//oposite of sidebar
+$content-margin :24px;
+
+
+$min-height : 500px;

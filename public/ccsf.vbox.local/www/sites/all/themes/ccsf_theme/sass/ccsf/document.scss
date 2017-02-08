@@ -1,0 +1,373 @@
+// _document.scss
+.doc-page-wrap{
+	@include max-width;
+	position:initial !important;
+
+	.node-doc:after{
+		content:none !important; 
+	}
+}
+.doc-banner{
+	width:100%;
+	height:520px;
+	background:$resources-header;
+	//position:absolute;
+	left:0;
+
+	.doc-banner-contents{
+		@include max-width;
+		display:table;
+		position:relative;
+		height:520px;
+
+		.doc-banner-image{
+			//padding:202px 0 0 0;
+			//height: 519px;
+			display:table-cell;
+			vertical-align:middle;
+			//padding:0 6% 0 12%;
+			width:$sidebarwidth;
+
+			.doc-banner-image-inner{
+				width:80px;
+				float:right;
+				margin:0 30px 0 0;
+				
+				img{
+					//width:120px;
+					//height:115px;
+					width:100%;
+					float:right;
+					//margin:0 60px 0 0;
+				}
+			}
+			
+			
+		}
+		.doc-banner-text{
+			display:table-cell;
+			vertical-align:middle;
+			//padding:0 12% 0 0;
+			width:$contentwidth;
+			h3{
+				@include font-h6($font-black);
+				font-weight:100;
+				margin:0;
+			}
+			.doc-name{
+				padding:0 0 20px $content-margin;
+			}
+			.doc-description{
+				@include font-body4($font-black);
+				padding:0 0 30px $content-margin;
+			}
+			.doc-banner-actions{
+				padding:0 0 0 $content-margin;
+			}
+			.doc-banner-cta{
+				background:$resources-section;
+				padding:1em;
+				margin:0 20px 0 0;
+				float:left;
+				color:$white;
+				@include transition-all(0.2s);
+			}
+			.doc-banner-cta:hover{
+				background-color:$grey-four;
+			}
+			.doc-banner-cta:after{
+				font-family:$icon-font;
+				padding:0 0 0 1em;
+			}
+			#doc-apply-cta:after{
+				content:'\eea6';
+			}
+			#doc-download-cta:after{
+				
+				content:'\e98e';
+			}
+			#doc-folder-cta:after{
+				content:'\e855';
+			}
+		}
+	}
+}
+
+.doc-full-content-wrap{
+	@include max-width;
+	//padding:520px 0 0 0;
+}
+.doc-full-sidebar{
+	width:$sidebarwidth;
+	float:left;	
+	margin:90px 0 140px 0;
+	p{
+		@include font-s3($font-grey);
+	}
+	a{
+		p{
+			color:$resources-section;
+		}
+	}
+	a:hover{
+		p{
+			color:$permits-highlight-blue !important;
+		}
+	}
+	h3{
+		@include font-s1($font-black);
+		text-transform:uppercase;
+		margin:0 0 10px 0;
+	}
+	.doc-business-stage,
+	.doc-dept{
+		margin:0 0 40px 0;
+		
+	}
+	.doc-business-need{
+		margin: 0 0 40px 0;
+		
+	}
+	.doc-business-stage{
+		@include clearfix;
+		p{
+			float:left;
+		}
+	}
+}
+.doc-full-main{
+	width:$contentwidth;
+	float:right;
+	margin:90px 0 120px 0;
+
+	h2{
+		@include font-h8($font-black);
+		margin:0;
+	}
+	p{
+		@include font-body2($font-grey);
+	}
+	.doc-main-information{
+		padding:0 0 45px $content-margin;
+	}
+	
+}
+.doc-page-wrap{
+
+	#block-views-related-docs-block{
+		//@include max-width;
+		width:$contentwidth;
+		float:right;
+		@include clearfix;
+		.view-related-docs,
+		.block-title
+		{
+			@include clearfix;
+			//width:$contentwidth;
+			//float:right;
+		}
+		.views-row{
+			width:41%;
+			margin:0 3% 3% 0;
+			padding:3%;	
+			float:left;
+			background:$grey-seven;
+		}
+	}
+}
+
+//////////// Related Items /////////////
+.doc-related-items,
+.block-ccsf-related-nodes,
+.related-doc,
+.related-doc-inner{
+	@include clearfix;
+}
+.related-doc{
+	h2{
+		border-top:4px solid $font-black;
+		margin:0 0 40px $content-margin;
+		padding:20px 0 0 0;
+	}
+}
+.related-doc-single{
+	//width:380px;
+	width:46%;
+	float:left;
+	margin:0 0 30px 4%;
+	padding:0;
+	background:$grey-seven;
+	.doc-teaser-title{
+		h3{
+			@include font-h7($font-black);
+			margin:0;
+			padding:30px 25px 10px 25px;
+		}
+	}
+	.doc-teaser-description{
+		@include font-body3($font-grey);
+		padding:0 25px;
+	}
+	.doc-teaser-actions{
+		padding:10px 25px 30px 25px;
+		@include clearfix;
+		a{
+			@include font-body3($resources-section);
+
+		}
+	}
+	.doc-teaser-actions,
+	.doc-teaser-actions{
+		.doc-teaser-view-cta,
+		.doc-teaser-download-cta,
+		.doc-teaser-folder-cta,
+		.doc-teaser-view-cta,
+		.doc-teaser-download-cta,
+		.doc-teaser-folder-cta
+		{
+			float:left;
+			margin:0 10px 0 0;
+			span:not(.notranslate){
+				display:none;
+			}
+		}
+		.doc-teaser-view-cta:before,
+		.doc-teaser-view-cta:before
+		{
+			@include icon-eye(1.25em,$resources-section);
+		}
+		.doc-teaser-download-cta:before,
+		.doc-teaser-download-cta:before
+		{
+			@include icon-download(1.1em,$resources-section);
+		}
+		.doc-teaser-folder-cta:before,
+		.doc-teaser-folder-cta:before
+		{
+			@include icon-folder(1.1em,$resources-section);
+		}	
+		.doc-teaser-view-cta:hover:before,
+		.doc-teaser-download-cta:hover:before,
+		.doc-teaser-folder-cta:hover:before,
+		.doc-teaser-view-cta:hover:before,
+		.doc-teaser-download-cta:hover:before,
+		.doc-teaser-folder-cta:hover:before
+		{
+			color:$permits-highlight-blue !important;
+		}
+	}
+}
+
+//////////// MEDIA QUERIES //////////////////
+@media only screen and (max-width:1200px){
+	.doc-banner{
+		height:auto;
+		.doc-banner-inner{
+			height:auto;
+			.doc-banner-contents{
+				padding:60px 0 60px 0;
+				@include clearfix;
+				height:auto;
+				width:90%;
+				margin:auto;
+				.doc-banner-image{
+					//display:block;
+				}
+				.doc-banner-text{
+					//display:block;
+				}
+			}
+		}
+	}
+	.doc-full-content-wrap{
+		width:90%;
+	}
+}
+@media only screen and (max-width:950px){
+	.doc-banner{
+		//height:auto;
+		.doc-banner-inner{
+			//height:auto;
+			.doc-banner-contents{
+				padding:40px 0 40px 0;
+				.doc-banner-image-inner{
+					float:none;
+					margin:auto;
+				}
+				.doc-banner-text{
+					width:65%;
+
+					.doc-name{
+						padding:0 0 5px 0;
+					}
+					.doc-description{
+						padding:0 0 10px 0;
+					}
+					.doc-banner-actions{
+						padding:0;
+					}
+					.doc-banner-cta{
+						font-size:1.25em;
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width:730px){
+	.doc-banner{
+		//height:230px;
+		.doc-banner-inner{
+			//height:230px;
+			.doc-banner-contents{
+				.doc-banner-image{
+					display:none;
+				}
+			}
+			.doc-banner-text{
+				width:100% !important;
+				.doc-name{
+					font-size:2em;
+				}
+				.doc-description{
+					font-size:1.25em;
+				}
+				
+				#doc-folder-cta{
+					display:none;
+				}
+			}
+		}
+	}
+	.doc-full-sidebar{
+		width:100%;
+		float:left;
+		margin:30px 0 30px 0;
+		
+	}
+	.doc-full-main{
+		width:100%;
+		float:left;
+		margin:0 0 30px 0;
+		.related-doc-inner{
+			h2{
+				margin:0 0 10px 0;
+				padding:10px 0 0 0;
+			}
+		}
+		.related-doc-single{
+			width:100%;
+			margin:0 0 20px 0;
+			height:auto !important;
+			.doc-teaser-folder-cta{
+				display:none;
+			}
+		}
+	}
+}
+@media only screen and (max-width:580px){
+
+}
+@media only screen and (max-width:320px){
+	
+}

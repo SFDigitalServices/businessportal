@@ -1,0 +1,28 @@
+{
+    "hostname": "10.250.60.236",
+    "fqdn": "businessportal.sfgov.org",
+    "basepath": "/var/www/html/drupal/current/public/ccsf.vbox.local/www",
+
+    "mysql": {
+      "version": "5.1",
+      "server_root_password": "root",
+      "server_debian_password": "root",
+      "server_repl_password": "root",
+      "tunable": {
+        "max_allowed_packet": "256M"
+      }
+    },
+    "drupal": {
+      "drush": {
+        "version": "6.2.0"
+      }
+    },
+    "drupal-solr": {
+      "solr_version": "4.4.0",
+      "drupal_root": "/var/www/html/drupal/current/public/ccsf.vbox.local/www"
+    },
+
+    "run_list": [
+      "recipe[ccsf::default]"
+    ]
+}

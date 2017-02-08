@@ -1,0 +1,154 @@
+// _permit_locator.scss
+
+/*****/
+// Variables //
+
+
+
+/*****/
+
+.permit-splash-wrap{
+	
+	/*height:520px;
+	overflow:hidden;
+	padding:0 !important;
+	position:relative;*/
+
+	.permit-splash{
+		width:100%;
+	}
+
+	.node-single-with-image{
+		@include max-width;
+	}
+}
+
+.permit-locator{
+	background: #f7f7f7; /* Old browsers */
+	background: -moz-linear-gradient(left, #f7f7f7 50%, #ffffff 50%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(50%,#f7f7f7), color-stop(50%,#ffffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #f7f7f7 50%,#ffffff 50%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #f7f7f7 50%,#ffffff 50%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #f7f7f7 50%,#ffffff 50%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to right, #f7f7f7 50%,#ffffff 50%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+	
+	//overflow:hidden;
+	//background-repeat:repeat-y;
+}
+.locator-wrap{
+	
+	position:relative;
+	@include max-width;
+	margin:auto;
+	padding:0 !important;
+	//width:100%;
+
+	.inside{
+		@include clearfix;
+	}
+	.pane-node{
+		width:$sidebarwidth;
+		 float:left;
+		 position:absolute;
+		//background:$grey-seven;
+	}
+	.pane-locator{
+		float:left;
+		//width:20%;
+		//height:100%;
+		max-width:$max-width;
+		width:100%;
+		clear:both;
+		//background:$grey-seven;	
+	}
+	.pane-test{// required itmes. this will need to be replaced
+		@include clearfix;
+		margin:0 0 0 $sidebarwidth;
+		position:relative;
+		width:$contentwidth;
+
+		.view-id-test{//the required items view
+			width:$contentwidth;
+			background:$white;
+		}
+	}
+	.panels-flexible-region-2-center{
+		width:100% !important;
+	}
+}
+
+.view-locator{
+	
+	.view-filters{
+		float:left; 
+		//height:100%;
+		width:$sidebarwidth;
+		//background:$grey-seven;	
+		//@include clearfix;
+		//width:20%;
+		margin:130px 0 0 0;
+		position:absolute;
+		//left:0;
+		//z-index:-1;
+	}
+	#views-exposed-form-locator-default{//the form tag wrapper
+		//max-width:$max-width;
+		//margin:auto;
+	}
+	.views-exposed-form{
+		//width:20%;
+	}
+	.view-content{
+		float:right;
+		width:$contentwidth;
+		position:relative;
+		z-index:10;
+		background:#fff;
+		margin: 0 0 0 $sidebarwidth;
+	}
+
+	#edit-search-api-views-fulltext-wrapper{//search field
+		//position:absolute;
+		float:left;
+		padding:0;
+	}
+	#edit-field-industry-tag-wrapper{//filters
+		//position:absolute;
+		//margin:75px 0 0 0;
+		float:left;
+		clear:both;
+		padding:0;
+	}
+	.views-submit-button{
+		float:left;
+		padding:0;
+
+	}
+}
+/*
+.pane-test{//required permits section
+	max-width:$max-width;
+	margin:auto;
+
+	.view-id-test{//the required items view
+		width:80%;
+		float:right;
+		background:#fff;
+	}
+}*/
+
+
+//////////// MEDIA QUERIES //////////////////
+@media only screen and (max-width:950px){
+
+}
+@media only screen and (max-width:730px){
+
+}
+@media only screen and (max-width:580px){
+
+}
+@media only screen and (max-width:320px){
+	
+}

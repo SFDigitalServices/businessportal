@@ -1,0 +1,996 @@
+// _template-13.scss
+/*
+*
+*	The template for the my folder page
+*
+*/
+.panels-flexible-template_13{
+	.my-folder-single-doc,
+	.my-folder-single-permit,
+	.my-folder-single-guide,
+	.my-folder-kit-item-wrapper,
+	.my-folder-kit-item-wrapper-last,
+	#my-folder-guide-wrap,
+	#my-folder-doc-wrap,
+	#my-folder-permits-wrap,
+	#my-folder-starter-kits-wrap-inner
+	{ 
+	    @include transition-all(0.2s);
+	    -webkit-animation-duration: .5s; 
+	    animation-duration: .5s; 
+	    -webkit-animation-fill-mode: both; 
+	    animation-fill-mode: both; 
+	} 
+
+
+	.ajax-changed { 
+	    -webkit-animation-name: fadeOut; 
+	    animation-name: fadeOut; 
+	}
+}
+@-webkit-keyframes fadeOut { 
+	    0% { 
+        	opacity: 1; 
+        	-webkit-transform: translateX(0); 
+    	} 
+    	80% { 
+        	opacity: 0;
+        	-webkit-transform: translateX(-50px);  
+        	
+		}
+		100%{
+			height:0px;
+			opacity: 0; 
+			visibility:hidden;
+			-webkit-transform: translateX(-50px);
+			-webkit-transform: scale(0);
+		} 
+	}
+	@keyframes fadeOut { 
+	    0% { 
+        	opacity: 1; 
+        	-webkit-transform: translateX(0); 
+    	} 
+    	80% { 
+        	opacity: 0; 
+        	-webkit-transform: translateX(-50px);  
+        	
+		}
+		100%{
+			height:0px;
+			opacity: 0; 
+			visibility:hidden;
+			-webkit-transform: translateX(-50px);
+			-webkit-transform: scale(0);
+		}
+	} 
+
+.special-remove{
+	display:none;
+}
+#my-folder-banner-wrap{
+	width:100%;
+	height:350px;
+	background:$global-header;
+	//display:table;
+	position:relative;
+	@include clearfix;
+}
+#my-folder-banner-inner{
+	@include clearfix;
+	//display:table-cell;
+	//vertical-align:middle;
+}
+#my-folder-banner-inner-two{
+	@include max-width;
+	@include clearfix;
+	display:table;
+	position:relative;
+	height:350px;
+}
+#my-folder-banner-icon{
+	width:25%;
+	display:table-cell;
+	vertical-align:middle;
+	//height:90px;
+	
+	//display:block;
+	//float:left;
+	margin:50px 120px 0 75px;
+	.banner-img-wrap{
+		width:108px;
+		height:86px;
+		text-align:center;
+		font-family:$font-one;
+		font-weight:600;
+		font-size:1.875em;
+		color:$global-section;
+		background-image:url('../images/graphics/icon_myfolder.png');
+		background-size:100%;
+		background-repeat:no-repeat;
+		//float:right;
+		//margin:0 120px 0 0;
+		line-height:3.5em;
+		display:block;
+		margin:auto;
+		p{
+			width:87%;
+			float:right;
+			line-height:3.6em;
+		}
+	}
+}
+#my-folder-banner-text{
+	width:75%;
+	display:table-cell;
+	vertical-align:middle;
+	//float:left;
+}
+.my-folder-heading{
+	@include font-h6($font-black);
+	float:left;
+	margin:0 0 8px $content-margin;
+}
+.my-folder-sub-heading{
+	@include font-body4($font-black);
+	float:left;
+	margin:0 0 0 $content-margin;
+}
+
+#my-folder-main-wrap{
+	@include bg-gradient(50%);
+}
+#my-folder-main-inner{
+	@include max-width;
+	@include bg-gradient(25%);
+}
+#my-folder-sidebar-wrap{
+	width:$sidebarwidth;
+	float:left;
+}
+#my-folder-sidebar-inner{
+	margin:90px 0 0 0;
+
+	
+		p{
+			margin:0 0 20px 0;
+			text-align:center;
+			line-height:3em;
+			@include font-button1($white);
+			cursor:pointer;
+		}
+		p:after{
+			margin:0 0 0 10px;
+		}	
+
+	#my-folder-sidebar-list-heading{
+		@include font-s1($font-black);
+		text-transform:uppercase;
+		margin:40px 0 20px 0;
+		float:left;
+	}
+	ul{
+		li{
+			@include font-menu2($global-section);
+			float:left;
+			clear:both;
+			a{
+				color:$global-section;
+				@include transition-all(0.2s);
+				p{
+					color:$global-section;
+					float:left;
+					clear:both;
+					margin:0 0 5px 0;
+					line-height:1.2em;
+					@include transition-all(0.2s);
+				}
+				div{
+					color:$font-grey;
+					float:left;
+					margin:0 0 0 5px;
+				}
+			}
+			a:hover{
+				color:$global-highlight-orange !important;
+				p{
+					color:$global-highlight-orange !important;
+				}
+				
+			}
+			.my-folder-sidebar-no-items{
+				color:$grey-two !important;
+				float:left;
+				margin:0 0 5px 0 !important;
+				line-height:1.2em;
+			}
+			.my-folder-sidebar-no-items-num{
+				float:left;
+				margin:0 0 0 5px;
+				color:$font-grey !important;
+			}
+		}
+	}
+}
+#my-folder-sidebar-download{
+	background:$global-section;
+	height:55px;
+	width:225px;
+	color:$white;
+	@include transition-all(0.2s);
+}
+#my-folder-sidebar-download:hover{
+	background:$grey-four !important;
+}
+#my-folder-sidebar-download:after{
+	font-family:$icon-font;
+	content:'\e98e';
+}
+#my-folder-sidebar-email{
+	background:$global-section;
+	height:55px;
+	width:225px;
+	color:$white;
+	@include transition-all(0.2s);
+}
+#my-folder-sidebar-email:hover{
+	background:$grey-four !important;
+}
+#my-folder-sidebar-email:after{
+	font-family:$icon-font;
+	content:'\e803';
+}
+#my-folder-contents-wrap{
+	width:$contentwidth;
+	float:right;
+	min-height:500px;
+	//background:$white;
+	padding:0 0 90px 0;
+}
+#my-folder-starter-kits-wrap{
+	//border-bottom:2px solid;
+}
+
+//////// STARTER KIT ////////
+.my-folder-kit-inner-one{
+	margin:0 0 80px 0;
+	display:none;
+
+}
+/*.my-folder-kit-inner-one,
+.my-folder-kit-inner-one p,
+.my-folder-kit-inner-one div{
+	@include transition-all(0.2s);
+}*/
+#my-folder-starter-kits-wrap-inner{
+	padding:0 0 40px 30px;
+	//@include transition-all(0.2s);
+}
+.remove-cta:before{
+	@include icon-exx(.85em,$font-black);
+	line-height:2.6em;
+	@include transition-all(0.2s);
+}
+.download-cta:before{
+	@include icon-download(1.1em,$font-black);
+	line-height:2em;
+	@include transition-all(0.2s);
+}
+.view-cta:before{
+	@include icon-eye(1.3em,$font-black);
+	line-height:1.7em;
+	@include transition-all(0.2s);
+}
+.view-cta,.download-cta,.remove-cta{
+	display:block;
+	width:35px;
+	height:35px;
+	background:$grey-five;
+	@include border-radius(50px);
+	text-align:center;
+	@include transition-all(0.2s);
+}
+.view-cta:hover,.download-cta:hover,.remove-cta:hover{
+	background:$global-section;
+}
+.view-cta:hover:before,.download-cta:hover:before,.remove-cta:hover:before{
+	color:$white;
+}
+
+
+#my-folder-starter-kit-actions{
+	@include clearfix;
+	border-top:4px solid $font-black;
+	margin:0 0 10px 0;
+	h2{
+		@include font-h8($font-black);
+		float:left;
+		margin:10px 0 0 0;
+
+	}
+	.count{
+			float:left;
+			color:$font-grey;
+			margin:10px 0 0 10px;
+	}
+	span{
+		color:$font-grey;
+	}
+	.my-folder-starter-kit-actions-buttons{
+		float:right;
+		margin:25px 0 0 0;
+		a{
+			float:left;
+
+			p{
+				@include font-body5($global-section);
+				margin:0 0 0 20px;
+				@include transition-all(0.2s);
+			}
+			p:hover{
+				color:$global-highlight-orange !important;
+			}
+		}
+		.my-folder-starter-kit-actions-download-all:before{
+			@include icon-download(1.2em,$font-black);
+			margin:0 8px 0 0;
+		}
+		.my-folder-starter-kit-actions-remove-all:before{
+			@include icon-exx(1em,$font-black);
+			margin:0 8px 0 0;
+		}
+	}
+}
+.my-folder-kit-header{
+	@include clearfix;
+	border-top:1px solid $grey-nine;
+	.my-folder-kit-title{
+		@include font-h3($font-black);
+		float:left;
+		cursor:pointer;
+		margin:20px 0;
+	}
+	.my-folder-kit-title:before{
+		@include icon-arrow-right(0.9em,$font-black);
+		margin:0 10px 0 0;
+		display:inline-block;
+		@include transition-all(0.2s);
+	}
+	.my-folder-kit-header-cta{
+		float:right;
+		margin:20px 0 0 0;
+		@include clearfix;
+
+		a{
+			float:left;
+			margin:0 0 0 5px;
+		}
+	}
+}
+.kit-active:before{
+	@include transform(rotate(90deg));
+	margin:0 10px 0 -17px !important;
+}
+//.my-folder-kit-inner-one{
+//	@include clearfix;
+
+.my-folder-kit-info{
+	//float:left;
+	@include font-body3($font-grey);
+	margin:0 0 33px 20px;
+	width:85%;
+}
+.my-folder-kit-section{
+	margin:0 0 0 20px;
+	
+	//float:left;
+}
+.my-folder-kit-section-bottom{
+	//border-bottom:1px solid $grey-nine;
+	//margin:0 0 0 29px;
+}
+.my-folder-kit-section-title{
+	border-top:1px solid $grey-nine;
+	@include clearfix;
+	h4{
+		@include font-menu2($global-section);
+		padding:0 0 0 12px;
+		//border-bottom:1px solid $grey-nine;
+		float:left;
+		margin:0;
+		padding:11px 0;
+		cursor:pointer;
+		@include transition-all(0.2s);
+	}
+	h4:hover{
+		color:$global-highlight-orange !important;
+	}
+	h4:before{
+		@include icon-arrow-right(1.3em,$font-black);
+		margin:0 10px 0 0;
+		@include transition-all(0.2s);
+		display:inline-block;
+	}
+	div{
+		margin:3px 0 0 10px;
+		@include clearfix;
+		float:left;
+		h4{
+			color:$font-grey;
+			
+		}
+		h4:before{
+			display:none;
+		}
+		
+	}
+}
+.section-kit-items{
+	display:none;
+	border-top:1px solid $grey-nine;
+	//@include transition-all(0.3s);
+}
+.my-folder-kit-item-wrapper,
+.my-folder-kit-item-wrapper-last{
+	margin:0 0 0 18px;
+	@include clearfix;
+	@include transition-all(0.2s);
+}
+.my-folder-kit-item-wrapper,
+.my-folder-kit-section-3 .my-folder-kit-item-wrapper-last{
+	border-bottom:1px solid $grey-nine;
+}
+.my-folder-kit-item-wrapper:hover,
+.my-folder-kit-item-wrapper-last:hover{
+	background:$grey-ten;
+}
+
+.my-folder-kit-item-header{
+	@include clearfix;
+}
+.my-folder-kit-item-title{
+	@include font-body3($font-black);
+	float:left;
+	//text-indent:-18px;
+	margin:15px 0 15px 15px;
+	width:75%;
+}
+.my-folder-kit-item-title:before{
+	@include icon-arrow-right(1.3em,$font-black);
+	//margin:0 10px 0 0;
+	@include transition-all(0.2s);
+	display:inline-block;
+	margin:0 10px 0 -17px;
+}
+.my-folder-kit-item-actions{
+	float:right;
+	@include clearfix;
+	margin:8px 0 0 0;
+	a{
+		float:left;
+		margin:0 0 0 5px;
+	}
+}
+.my-folder-kit-item-description-wrap{
+	@include clearfix;
+	float:left;		
+}
+.my-folder-kit-item-description{
+	float:left;
+	@include font-body3($font-grey);
+	margin:0 0 24px 18px;
+	width:82%;
+	display:none;
+}
+#my-folder-buffer{
+	height:90px;
+}
+/////////// PERMITS & DOCS SECTION ///////////
+#my-folder-permits-wrap,
+#my-folder-doc-wrap,
+#my-folder-guide-wrap{
+	@include clearfix;
+	padding:0 0 70px 30px;
+
+	#my-folder-permits-actions,
+	#my-folder-doc-actions,
+	#my-folder-guide-actions{
+		@include clearfix;
+		border-top:4px solid $font-black;
+		//border-bottom:1px solid $grey-nine;
+		h2{
+			@include font-h8($font-black);
+			float:left;
+			margin:10px 0 10px 0;
+		}
+		.count{
+			color:$font-grey;
+			margin:10px 0 0 10px;
+		}
+		span{
+			color:$font-grey;
+		}
+	}
+	////////
+	.my-folder-single-permit-heading,
+	.my-folder-single-doc-heading,
+	.my-folder-single-guide-heading{
+		@include clearfix;
+		h3{
+			@include font-h3($font-black);
+			float:left;
+			width:75%;
+		}
+		.my-folder-single-permit-action,
+		.my-folder-single-doc-actions,
+		.my-folder-single-guide-action{
+			@include clearfix;
+			float:right;
+			//width:25%;
+			margin:25px 0 0 0;
+			p{
+				font-size:1em;
+			}
+			a{
+				display:block;
+				width:35px;
+				height:35px;
+				background:$grey-five;
+				@include border-radius(40px);
+				float:left;
+				margin:0 0 0 5px;
+				text-align:center;
+				line-height:2.2em;
+				@include transition-all(0.2s);
+			}
+			a:hover{
+				background:$global-section;
+
+				.my-folder-view-button:before,
+				.my-folder-download-button:before,
+				.my-folder-remove-button:before{
+					color:$white;
+					
+				}
+			}
+			.my-folder-view-button,
+			.my-folder-download-button,
+			.my-folder-remove-button{
+				span:not(.notranslate){
+					display:none;
+				}
+			}
+			.my-folder-view-button:before,
+			.my-folder-download-button:before,
+			.my-folder-remove-button:before{
+				@include transition-all(0.2s);
+			}
+			.my-folder-view-button:before{
+				@include icon-eye(1.3em,#000000);
+				line-height:1.7em;
+			}
+			.my-folder-download-button:before{
+				@include icon-download(1.1em,#000000);
+				line-height:2em;
+			}
+			.my-folder-remove-button:before{
+				@include icon-exx(0.85em,#000000);
+				line-height:2.6em;
+			}
+		}	
+	}
+		
+	////////
+	.my-folder-permits-action-buttons,
+	.my-folder-doc-action-buttons,
+	.my-folder-guide-action-buttons{
+		float:right;
+		margin:24px 0 0 0;
+		a{
+			float:left;
+
+			p{
+				@include font-body5($global-section);
+				margin:0 0 0 20px;
+				@include transition-all(0.2s);
+			}
+			p:hover{
+				color:$global-highlight-orange !important;
+			}
+		}
+		.my-folder-permits-actions-download-all:before,
+		.my-folder-doc-actions-download-all:before,
+		.my-folder-guide-actions-download-all:before{
+			@include icon-download(1.2em,$font-black);
+			margin:0 8px 0 0;
+		}
+		.my-folder-permits-actions-remove-all:before,
+		.my-folder-doc-actions-remove-all:before,
+		.my-folder-guide-actions-remove-all:before{
+			@include icon-exx(1em,$font-black);
+			margin:0 8px 0 0;
+		}
+	}
+	.my-folder-single-permit,
+	.my-folder-single-doc,
+	.my-folder-single-guide{
+		@include clearfix;
+		border-top:1px solid $grey-nine;
+		@include transition-all(0.2s);
+
+		a{
+			color:$font-black;
+			h3{
+				@include font-h3($font-black);
+				float:left;
+				margin:25px 0 10px 0;
+				width:80%;
+			}
+		}
+		p{
+			@include font-body3($font-grey);
+		}
+	}
+	.my-folder-single-permit:hover,
+	.my-folder-single-doc:hover,
+	.my-folder-single-guide:hover{
+		background:$grey-ten;
+	}
+	.my-folder-permit-description,
+	.my-folder-doc-description,
+	.my-folder-guide-description{
+		float:left;
+		margin:0 0 40px 0;
+		width:85%;
+	}
+}
+//////Mail Modal////////
+#mail-modal,
+#mail-modal-success,
+#mail-modal-fail{
+	display:none;
+	width:522px;
+	height:230px;
+	background:$white;
+	position:fixed;
+	z-index:9999999;
+	left:50%;
+	top:50%;
+	margin:-115px 0 0 -261px;
+	border:1px solid $grey-nine;
+	#mail-modal-close{
+		width:35px;
+		height:35px;
+		background:$global-section;
+		position:absolute;
+		right:-18px;
+		top:-18px;
+		@include border-radius(40px);
+		cursor:pointer;
+		text-align:center;
+		p{
+			padding:0;
+			line-height:35px;
+			text-align:center;
+		}
+		span:not(.notranslate) {
+			display:none;
+		}
+		
+		p:before{
+			@include icon-exx(1em,$white);
+			display:block;
+			//margin:6px 0 0 9px;
+		}
+		
+	}
+	p{
+		@include font-body3($font-grey);
+		padding:0 30px 0 30px;
+	}
+	h3{
+		@include font-h8($font-black);
+		margin:0 0 0 0;
+		padding:20px 30px 0 30px;
+	}
+	#mail-modal-input-wrap{
+		margin:25px 0 0 0;
+		@include clearfix;
+	}
+	input{
+		width:322px;
+		height:50px;
+		margin:0 0 0 30px;
+		padding:0;
+		float:left;
+		background:$grey-seven;
+		border:1px solid $grey-nine;
+		@include font-body3($font-black);
+		text-indent:15px;
+		outline:none;
+	}
+	input::-webkit-input-placeholder {
+	   	font-family:"Helvetica", Helvetica, Arial, sans-serif;
+		color:$grey-twelve;
+	}
+
+	input:-moz-placeholder { /* Firefox 18- */
+	   line-height:35px; 
+	   font-family:"Helvetica", Helvetica, Arial, sans-serif;
+		color:$grey-twelve;
+	}
+
+	input::-moz-placeholder {  /* Firefox 19+ */
+	   line-height:35px;
+	    font-family:"Helvetica", Helvetica, Arial, sans-serif;
+		color:$grey-twelve;
+	}
+
+	input:-ms-input-placeholder {  
+	    font-family:"Helvetica", Helvetica, Arial, sans-serif;
+	    color:$grey-twelve;
+	}
+	#mail-modal-send,
+	#mail-close-button{
+		float:left;
+		width:119px;
+		height:54px;
+		background:$global-section;
+		margin:0 30px 0 17px;
+		cursor:pointer;
+		p{
+			@include font-body3($white);
+			margin:17px 0 0 0;
+		}
+		p:after{
+			@include link-arrow($white,4px);
+		}
+	}
+	#mail-modal-error{
+		@include font-num1($global-highlight-orange);
+		margin:13px 0 0 30px;
+		display:none;
+	}
+	#mail-modal-error:before{
+		@include icon-attention(1em,$global-highlight-orange);
+		margin:0 8px 0 0;
+	}
+}
+#mail-modal-success{
+	display:block;
+	#mail-close-button{
+		margin:0 30px 0 25px;
+	}
+}
+//}
+#cart-mobile{
+	display:none;
+}
+
+#folder-empty{
+	@include font-h2($font-black);
+	margin:0 0 0 $content-margin;
+}
+#mail-whiteout{
+	width:100%;
+	height:100%;
+	position:fixed;
+	background:rgba(255,255,255,.5);
+	top:0;
+	left:0;
+	z-index:1;
+	display:none;
+}
+
+//////////// MEDIA QUERIES //////////////////
+@media only screen and (max-width:1200px){
+	#my-folder-main-wrap{
+		#my-folder-main-inner{
+			width:90% !important;
+		}
+	}
+	#my-folder-sidebar-wrap{
+		#my-folder-sidebar-inner{
+			#my-folder-sidebar-download,
+			#my-folder-sidebar-email{
+				width:80% !important;
+				font-size:1em;
+				height:auto;
+			}
+			ul{
+				width:90%;
+			}
+		}
+	}
+}
+@media only screen and (max-width:950px){
+	#my-folder-banner-wrap{
+		height:320px;
+	}
+	#my-folder-banner-inner{
+		width:90%;
+		margin:auto;
+	}
+	#my-folder-banner-inner-two{
+		height:320px;
+		display:block;
+	}
+	#my-folder-banner-icon{
+		display:block;
+		position:relative;
+		top:50%;
+		transform:translateY(-50%);
+		float:left;
+		margin:0;
+		.banner-img-wrap{
+			margin:auto;
+			float:none;
+			display:block;
+			p{
+				padding:17px 0 0 0 !important;
+			}
+			
+		}
+	}
+	#my-folder-banner-text{
+		@include clearfix;
+		display:block;
+		position:relative;
+		top:50%;
+		transform:translateY(-50%);
+		float:right;
+		.my-folder-heading,
+		.my-folder-sub-heading{
+			width:100%;
+			padding:0 0 0 4%;
+		}
+	}
+	#my-folder-sidebar-download,
+	#my-folder-sidebar-email{
+			width:70% !important;
+			font-size:1.1em !important;
+			height:auto;
+			line-height:1.5em !important;
+			//text-align:left !important;
+			padding:10px;
+			//padding:10px;
+	}
+	#my-folder-sidebar-list-heading{
+		margin:15px 0 15px 0 !important;
+		font-size:1.1em !important;
+	}
+	#my-folder-contents-wrap{
+		font-size:14px;
+	}
+	
+	#my-folder-permits-wrap,
+	#my-folder-doc-wrap,
+	#my-folder-guide-wrap,
+	#my-folder-starter-kits-wrap-inner{
+		.my-folder-permits-action-buttons,
+		.my-folder-doc-action-buttons,
+		.my-folder-guide-action-buttons,
+		.my-folder-starter-kit-actions-buttons{
+			margin:17px 0 0 0;
+			a {
+				p{
+					//font-size:1.1em;
+				}
+			}
+		}
+
+		.my-folder-single-permit-action,
+		.my-folder-single-doc-actions{
+			margin:15px 0 10px 0 !important;
+		}
+		.my-folder-single-permit,
+		.my-folder-single-doc,
+		.my-folder-single-guide{
+			p{
+				//font-size:1.125em;
+			}
+		}
+		.my-folder-kit-section-title {
+			div{
+				margin:1px 0 0 10px;
+			}
+		}	
+		.my-folder-kit-inner-one{
+			//font-size:1.125em;
+		}
+		.my-folder-kit-header-cta{
+			.download-cta:before{
+				//font-size:1.4em !important;
+				line-height:2.4em !important;
+			}
+			.remove-cta:before{
+				//font-size:1.1em !important;
+				line-height:2.9em !important;
+			}
+		}
+		.my-folder-kit-item-actions{
+			.download-cta:before{
+				//font-size:1.2em !important;
+				line-height:2.4em !important;
+			}
+			.remove-cta:before{
+				//font-size:1em !important;
+				line-height:2.9em !important;
+			}
+			.view-cta:before{
+				//font-size:1.4em;
+				line-height:2.1em;
+			}
+		}
+		.my-folder-single-permit-action,
+		.my-folder-single-doc-actions,
+		.my-folder-single-guide-action{
+			.my-folder-view-button:before	{
+				//font-size:1.5em !important;
+				line-height:2em !important;
+			}
+			.my-folder-download-button:before{
+				//font-size:1.4em !important;
+				line-height:2.2em !important;
+			}
+			.my-folder-remove-button:before{
+				//font-size:1.1em !important;
+				line-height:2.9em !important;
+			}
+		}
+		.my-folder-single-doc-heading{
+			h3{
+				width:70%;
+			}
+		}
+	}
+	#mail-modal {
+		input{
+			font-size:1.4em;
+			//@include font-body3(red);
+		}
+		p{
+			font-size:1.4em;
+		}
+		#mail-modal-send {
+			p{
+				font-size:1.4em;
+			}
+		}
+	}
+}
+@media only screen and (max-width:850px){
+	#my-folder-permits-wrap{
+		.my-folder-single-permit-heading {
+			h3{
+				width:50%;
+			}
+		}
+	}
+}
+@media only screen and (max-width:650px){
+	#my-folder-banner-wrap{
+		display:none;
+	}
+	#my-folder-cart-wrap{
+		display:none;
+	}
+	#cart-mobile{
+		display:block;
+		height:500px;
+		width:100%;
+		p{
+			text-align:center;
+			@include font-h5($font-black);
+			width:50%;
+			margin:auto;
+			padding:90px 0 0 0;
+		}
+	}
+}
+@media only screen and (max-width:580px){
+
+}
+@media only screen and (max-width:320px){
+	
+}

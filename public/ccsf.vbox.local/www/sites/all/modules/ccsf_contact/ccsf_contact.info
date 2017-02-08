@@ -1,0 +1,12 @@
+name = CCSF Contact Forms
+description = Creates custom blocks for the various contact forms on the site. 
+core = 7.x
+
+
+scripts[] = js/jquery.ui.touch-punch.min.js
+scripts[] = js/ccsf_contact.js
+scripts[] = js/ccsf_feedback.js
+
+
+stylesheets[all][] = css/ccsf_contact.css
+stylesheets[all][] = css/ccsf_feedback.css

@@ -1,0 +1,382 @@
+<?php
+/**
+* 
+* @file
+* A block module that displays a list of nodes in a form for users to download
+*
+*/
+
+/**
+* Admin Functions
+*/
+module_load_include('inc','starter_kit','starter_kit_object');
+module_load_include('inc','starter_kit','starter_kit_delete');
+module_load_include('inc','starter_kit','starter_kit_admin');
+module_load_include('inc','starter_kit','starter_kit_add');
+module_load_include('inc','starter_kit','starter_kit_edit');
+module_load_include('inc','starter_kit','starter_kit_rearrange');
+module_load_include('inc','starter_kit','starter_kit_user_submit');
+
+//drupal_add_js(drupal_get_path('module', 'starter_kit') .'/js/starter_kit.js');
+
+/* CSS */
+/**
+* implements hook_help().
+*/
+function starter_kit_help($path, $arg){
+	switch($path){
+		case 'admin/help#starter_kit':
+			return '<p>' . t("A block module that displays a list of nodes in a form for users to download") . '</p>';
+		//	break;
+	}
+}
+
+/**
+* implements hook_menu().
+*/
+function starter_kit_menu() {
+
+  $items = array();
+
+  $items['admin/structure/starter_kit'] = array(
+    'title' => 'Starter Kit',
+    'description' => 'Configuration for Starter Kit Blocks',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('starter_kit_start_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['admin/structure/starter_kit/edit/%'] = array(
+    'title' => 'Your Starter Kit',
+    'description'=>'A view of the starter kit you have made',
+    'page callback'=>'drupal_get_form',
+    'page arguments'=>array('starter_kit_edit_form',4),
+    'access arguments'=>array('access administration pages'),
+    'type'=>MENU_CALLBACK,
+  );
+  $items['admin/structure/starter_kit/delete/%']=array(
+  	'title'=>'Delete Your Starter Kit',
+  	'description'=>'Delete your starter kit',
+  	'page callback'=>'drupal_get_form',
+  	'page arguments'=>array('starter_kit_delete_form',4),
+  	'access arguments'=>array('access administration pages'),
+  	'type'=>MENU_CALLBACK,
+  );
+  $items['admin/structure/starter_kit/rearrange/%/%'] = array(
+  	'title'=>'New Starter Kit',
+  	'description'=>'Add a new Starter Kit',
+  	'page callback'=>'drupal_get_form',
+  	'page arguments'=>array('starter_kit_rearrange_form',4,5),
+  	'access arguments'=>array('access administration pages'),
+  	'type'=>MENU_CALLBACK,
+  );
+  $items['admin/structure/starter_kit/add/%']=array(
+  	'title'=>'Add to My Folder',
+  	'description'=>'callback function for adding starter kit items to my folder',
+  	'page callback'=>'starter_kit_add',
+  	'page arguments'=>array(4),
+  	'access arguments'=>array('access content'),
+  	'type'=>MENU_CALLBACK,
+  );
+  $items['admin/structure/starter_kit/download/%']=array(
+  	'title'=>'Download Selected',
+  	'description'=>'callback function for downloading selected items from starter kit',
+  	'page callback'=>'starter_kit_download',
+  	//'page arguments'=>array(4),
+  	'access arguments'=>array('access content'),
+  	'type'=>MENU_CALLBACK,
+  );
+  return $items;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+/**
+* implements hoook_block_info().
+*
+*/
+function starter_kit_block_info(){
+	$all = starter_kit_all();
+	$blocks=array();
+	
+	foreach($all as $kit){
+		$name=$kit->title;
+		$id=$kit->id;
+		$blocks['starter_kit_'.$id] = array(//this is the delta in hook_block_view();
+			//The name that will appear in the block list.
+			'info'=>t('Starter Kit : '. $name),
+			//Default setting.
+			'cache'=>DRUPAL_CACHE_GLOBAL,
+		);
+	}	
+	return $blocks;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function starter_kit_theme($existing, $type, $theme, $path) {
+  return array(
+    'starter_kit_draggable' => array(
+      'render element' => 'element'
+      
+    ),
+    'starter_kit_block_theme'=>array(
+		'variables'=>array(
+			'kit'=>NULL,
+		),
+		'template'=>'starter_kit_block',
+	),
+  );
+}
+
+/**
+* implements hook_block_view().
+*/
+
+function starter_kit_block_view($delta = ''){
+	$search = 'starter_kit_';
+	$id = str_replace($search,'',$delta);
+	//$id=(int)$id;
+	$all = starter_kit_single($id);//find the starter kit on the db
+	//dpm($all);
+	/*foreach($all as $key){
+		$title=$key->title;//get the title of the kit
+	}*/
+	//prepare a starter kit array using the function defined in the my_folder module
+	$kit = my_folder_prep_kit($id);
+	//dpm($kit);
+
+	$case = 'starter_kit_'.$id;
+	
+	switch($delta){
+		case $case:			
+			
+			//$block['subject']=$title;
+			
+			$block['content']=theme('starter_kit_block_theme',array('kit'=>$kit));
+			
+			break;
+
+	}
+	return $block;
+}
+
+
+
+/* form to render block view of your starter kit to the users */
+///// DEPRICATED / REMOVED //////////
+///// USING TEMPLATE FILE NOW ////////
+/*
+function starter_kit_block_form($form, &$form_state, $id, $title){
+	
+	//$journeymap = starter_kit_expanded($id,1);
+	//$journeyrelated = starter_kit_expanded($id,2);
+	//$adacompliance = starter_kit_expanded($id,3);
+	//$adarelated = starter_kit_expanded($id,4);
+	
+	$starterkit = starter_kit_expanded($id);
+
+	$form['select_all']=array(
+		'#prefix'=>'<div id="starter-kit-select-all">',
+		'#type'=>'button',
+		'#value'=>t('Select All'),
+		'#suffix'=>'</div>',
+	);
+	$form['deselect_all']=array(
+		'#prefix'=>'<div id="starter-kit-deselect-all">',
+		'#type'=>'button',
+		'#value'=>t('Deselect All'),
+		'#suffix'=>'</div>',
+	);
+	$form['download_selected']=array(
+		'#type'=>'submit',
+        '#value'=>t('Download Selected'),
+        '#name'=>t('download_selected'),
+        '#submit'=>array('starter_kit_download_selected_submit'),
+	);
+	$form['add_selected']=array(
+		'#prefix'=>'<div class="add-selected my-folder-submit">',
+		'#type'=>'button',
+		'#value'=>t('Add Selected'),
+		'#suffix'=>'</div>',	
+	);
+	$form['explore'] = array(
+    	'#type'=>'fieldset',
+		'#title'=>t('Explore The Journey'),
+		'#collapsible'=>TRUE,
+		'#collapsed'=>TRUE,
+	);
+	$form['explore']['journeymap']=array(
+		'#type'=>'fieldset',
+		'#title'=>t('Journey Map'),
+		'#collapsible'=>TRUE,
+		'#collapsed'=>TRUE,
+	);
+	
+	$count = 0;
+	foreach($starterkit->journeymap as $key){ 
+       $count++;
+       
+	  $node = individual_node($key);
+	  foreach($node as $index){
+	    $title=$index->title;
+	    $nid=$index->nid;
+		
+		$form['explore']['journeymap']['check_'.$nid]=array(
+			'#type'=>'checkbox',
+			'#name'=>'selected[]',
+			'#attributes'=>array('value'=>$nid),
+			'#prefix'=>'<div class="starter-kit-node-entry clearfix"><div class="item-checkbox clearfix">',
+			'#suffix'=>'</div>'
+		);
+		
+	  	$form['explore']['journeymap']['node_'.$nid] = array(
+	    	'#prefix'=> '<p>' .l($title,'permit/' . $nid) .'</p>',//this link URL is based on the views set up ive built
+	    	'#suffix'=>'</div>'
+	  	);
+	  }
+    }
+	$form['explore']['related']=array(
+		'#type'=>'fieldset',
+		'#title'=>t('Related Resouces'),
+		'#collapsible'=>TRUE,
+		'#collapsed'=>TRUE,
+	);
+	$form['ada']=array(
+		'#type'=>'fieldset',
+		'#title'=>t('ADA Requirements'),
+		'#collapsible'=>TRUE,
+		'#collapsed'=>TRUE,
+	);
+	$form['ada']['compliance']=array(
+		'#type'=>'fieldset',
+		'#title'=>t('ADA Compliance Guide'),
+		'#collapsible'=>TRUE,
+		'#collapsed'=>TRUE,
+	);
+	$form['ada']['related']=array(
+		'#type'=>'fieldset',
+		'#title'=>t('Related Resources'),
+		'#collapsible'=>TRUE,
+		'#collapsed'=>TRUE,
+	);
+	return $form;
+
+}*/
+
+function journeymap_master_check_js(){
+	if($_POST['journey_master_check']){
+		//drupal_set_message($_POST['journey_master_check']);
+		
+	}
+	
+}
+
+function starter_kit_download_selected_submit(){
+	//dpm(print_r($_POST['selected']));
+	$item_list=array();
+	if(!empty($_POST['selected'])){
+		foreach($_POST['selected'] as $nid){
+			if($nid>0){
+				//dpm($nid);
+				array_push($item_list,$nid);
+			}
+		}
+	}
+	//$items = implode(',',$item_list); 
+	//dpm($items_list);
+	starter_kit_download($item_list);
+}
+
+/*--------------------------- db calls -------------------------*/
+/*
+* return all nodes as an array
+* used to check if a node exists or not
+*/
+function starter_kit_nodes(){
+	$nodes = db_select('node','n')
+		->fields('n',array('nid','title'))
+		->condition('status',1)
+		->orderBy('nid','ASC')
+		->execute();
+		return $nodes;
+}
+/*
+* return the expanded arrays for a starter kit section
+*/
+//function starter_kit_expanded($id,$index){
+function starter_kit_expanded($id){	
+	$row = starter_kit_single($id);//this eventually needs to refer to a specific entry
+	$starterkit = new kit;
+
+	foreach($row as $key){
+		$starterkit->id = $id;
+		$starterkit->title= $key->title;
+		$starterkit->journeymap = explode(',',$key->f1);
+		$starterkit->documents = explode(',',$key->f2);
+		$starterkit->permits = explode(',',$key->f3);
+		$starterkit->info = $key->info;
+		//$starterkit->adarelated = explode(',',$key->f4);
+	}
+
+	return $starterkit;
+
+	/*switch($index){
+		case 1://journey map
+			$journeymap=array();
+			foreach($row as $key){
+				$journeymap = explode(',',$key->f1);
+			}
+			return $journeymap;
+			break;
+		
+		case 2://journey related
+			$journeyrelated=array();
+			foreach($row as $key){
+				$journeyrelated = explode(',',$key->f2);
+			}
+			return $journeyrelated;
+			break;
+		
+		case 3://ADA Compliance
+			$adacompliance=array();
+			foreach($row as $key){
+				$adacompliance = explode(',',$key->f3);
+			}
+			return $adacompliance;
+			break;
+
+		case 4://ADA related
+			$adarelated=array();
+			foreach($row as $key){
+				$adarelated = explode(',',$key->f4);
+			}
+			return $adarelated;
+			break;	
+  	}*/
+}
+//retrieve an individual node by nid
+function individual_node($nid){
+  $node = db_select('node','n')
+    ->fields('n',array('nid','title'))
+    ->condition('nid',$nid,'=')
+    ->execute();
+  return $node;
+}
+//retrieve an individual starterkit by its id#
+function starter_kit_single($id){
+  $kits = db_select('starter_kit','s')
+    ->fields('s')
+    ->condition('id',$id)
+    ->execute();
+    return $kits;
+}
+
+//retrieve all starter kits
+function starter_kit_all(){
+	$kits = db_select('starter_kit','s')
+		->fields('s',array('id','title'))//fetch title also
+		->orderBy('id','ASC')
+		->execute();
+		return $kits;
+}

@@ -1,0 +1,424 @@
+<?php
+/*
+* Module for loading ccsf site-wide scripts
+*/
+
+function ccsf_scripts_forms_prep($content){
+	$forms = array();
+	if(isset($content['field_description']['#object']->field_form_1_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_1_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_1_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_2_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_2_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_2_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_3_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_3_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_3_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_4_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_4_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_4_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_5_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_5_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_5_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_6_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_6_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_6_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_7_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_7_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_7_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_8_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_8_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_8_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_9_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_9_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_9_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_10_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_10_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_10_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_11_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_11_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_11_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_12_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_12_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_12_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_13_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_13_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_13_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_14_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_14_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_14_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_15_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_15_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_15_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+  if(isset($content['field_description']['#object']->field_form_16_title['und'])){
+    $formItem = array();
+    $formItem['name'] = $content['field_description']['#object']->field_form_16_title['und'][0]['value'];
+    $formItem['file'] = $content['field_description']['#object']->field_form_16_pdf['und'][0]['filename'];
+    array_push($forms,$formItem);
+  }
+	return $forms;
+}
+
+function ccsf_scripts_issuing_department($deptID){
+	//dpm('dept');
+	$issuing_dept_term = taxonomy_term_load($deptID);
+  	$issuing_dept_name = $issuing_dept_term->name;
+  	
+
+  	$query = new EntityFieldQuery();
+
+
+ 	$entities = $query->entityCondition('entity_type', 'node')
+  		->propertyCondition('type', 'department')
+  		->propertyCondition('title', $issuing_dept_name )
+  		->propertyCondition('status', 1)
+  		->range(0,1)
+  		->execute();
+
+	if (!empty($entities['node'])) {
+		$node = node_load(array_shift(array_keys($entities['node'])));
+	}
+	//dpm($node);
+	$name = $node->title;
+	if($name == '--'){
+		$name = '';
+	}
+	$address = $node->field__dept_address['und'][0]['value'];
+	if($address == '--'){
+		$address = '';
+	}
+	$phone = $node->field_phone_number['und'][0]['value'];
+	if($phone == '--'){
+		$phone = '';
+	}
+	$email = $node->field_email['und'][0]['value'];
+	$contact_url = $node->field_contact_us_url['und'][0]['value'];
+	if($contact_url == '--'){
+		$contact_url = '';
+	}
+	$website_url = $node->field_website_url['und'][0]['value'];
+	if($website_url == '--'){
+		$website_url = '';
+	}
+
+	$my_string = '<div class="issuing-dept-info">';
+	if($name != ''){
+		$my_string .= '<p class="dept-name">'.$name.'</p>';
+	}
+	if($address != ''){
+		$my_string .= '<p class="dept-address">'.$address.'</p>';
+	}
+	if($phone != ''){
+		$my_string .= '<p class="dept-phone">'.$phone.'</p>';
+	}
+	if($contact_url != ''){
+		$my_string .= '<a href="'.$contact_url.'"><p>Contact Us</p></a>';
+	}
+	if($website_url != ''){
+		$my_string .= '<a href="'.$website_url.'"><p>Our Website</p></a>';	
+	}
+	
+	$my_string .= '</div>';
+
+	//return $my_string;
+  return $node;
+}
+
+//get the teaser view of a node from just the title
+function ccsf_scripts_related_item($title){
+
+  $node = db_select('node','n')
+    ->fields('n',array('nid','title'))
+    ->condition('title',$title,'=')
+    ->execute();
+  //return $node;
+
+  foreach($node as $key){
+    if(isset($key->nid)){
+      $nid=$key->nid;
+    }
+    
+  }
+  //dpm($nid); 
+  if(isset($nid)){
+   $nodeload=node_load($nid); 
+   $nodeview=node_view($nodeload, 'teaser'); 
+   $rendered_teaser = render($nodeview); 
+   return $rendered_teaser;
+  }
+  
+  
+}
+function ccsf_scripts_docs_by_tid($tid){
+  $items = db_select('field_data_field_business_stage','b')
+    ->fields('b',array('bundle','entity_id','field_business_stage_tid'))
+    ->condition('field_business_stage_tid',$tid,'=')
+    ->condition('bundle','document','=')
+    ->execute();
+
+  return $items;
+}
+function ccsf_scripts_permits_by_tid($tid){
+  $items = db_select('field_data_field_industry_tag','b')
+    ->fields('b',array('bundle','entity_id','field_industry_tag_tid'))
+    ->condition('field_industry_tag_tid',$tid,'=')
+    ->condition('bundle','permit','=')
+    ->execute();
+
+  return $items;
+}
+
+function ccsf_scripts_related_by_id($id){
+  /*$node = db_select('node','n')
+    ->fields('n',array('nid','title'))
+    ->condition('nid',$id,'=')
+    ->execute();
+  //return $node;
+
+  foreach($node as $key){
+    if(isset($key->nid)){
+      $nid=$key->nid;
+      dpm($key->title);
+    }
+    
+  }*/
+  //dpm($nid); 
+  
+  if(isset($id)){
+   $nodeload=node_load($id); 
+   $nodeview=node_view($nodeload, 'teaser'); 
+   $rendered_teaser = render($nodeview); 
+   return $rendered_teaser;
+  }
+}
+
+function ccsf_scripts_id_it_type($id,$type){
+  //if(isset($id)){
+   $nodeload=node_load($id); 
+   if($nodeload->type==$type){
+    return TRUE;
+   }else{
+    return FALSE;
+   }
+   //$nodeview=node_view($nodeload, 'teaser'); 
+   //$rendered_teaser = render($nodeview); 
+   //return $rendered_teaser;
+  //}
+}
+
+//get a NID from a node title
+function ccsf_scripts_get_nid($title){
+  $node = db_select('node','n')
+      ->fields('n',array('nid','title'))
+      ->condition('title',$title,'=')
+      ->execute();
+    //return $node;
+
+  foreach($node as $key){
+    if(isset($key->nid)){
+      $nid=$key->nid;
+    }
+  }
+
+  if(isset($nid)){
+    return $nid;
+  }
+  else{
+    return FALSE;
+  }
+}
+
+function ccsf_scripts_get_title($nid){
+  $node = db_select('node','n')
+      ->fields('n',array('nid','title'))
+      ->condition('nid',$nid,'=')
+      ->execute();
+    //return $node;
+
+  foreach($node as $key){
+    if(isset($key->title)){
+      $title=$key->title;
+    }
+  }
+
+  if(isset($title)){
+    return $title;
+  }
+  else{
+    return FALSE;
+  }
+}
+
+function ccsf_scripts_get_department($name){
+  //dpm($name);
+  $node = db_select('node','n')
+      ->fields('n',array('nid','title','type'))
+      ->condition('type','department','=')
+      ->condition('title',$name,'=')
+      ->execute();
+  /*
+      $issuing_dept_term = taxonomy_term_load($deptID);
+      $issuing_dept_name = $issuing_dept_term->name;
+
+      $query = new EntityFieldQuery();
+      $entities = $query->entityCondition('entity_type', 'node')
+        ->propertyCondition('type', 'department')
+        ->propertyCondition('title', $issuing_dept_name  )
+        ->propertyCondition('status', 1)
+        ->range(0,1)
+        ->execute();
+
+      if (!empty($entities['node'])) {
+        $node = node_load(array_shift(array_keys($entities['node'])));
+        
+      }
+      $dept_nid = $node->nid;
+*/
+    foreach($node as $key){
+      $node_id=$key->nid;
+    }
+  return $node_id;
+}
+//get the page url. Used to assign classes that relate to the different section colors
+function ccsf_get_url(){
+  $url = url($_GET['q']);
+
+  $where = '';
+
+  if (strpos($url,'home') !== false ) {//on the home page
+    $where = 'home';
+  }
+
+  if (strpos($url,'start') !== false) {//in the start section
+    $where = 'start';
+  }
+
+  if( strpos($url,'start/starter-kits') !==false ) {
+    $where = 'kits';
+  }
+
+  if (strpos($url,'manage') !== false) {//in the manage section
+    $where = 'manage';
+  }
+
+  if (strpos($url,'grow') !== false) {//in the grow section
+    $where = 'grow';
+  }
+
+  if (strpos($url,'permits-licenses') !== false) {//in the permit wizard
+    $where = 'permit';
+  }
+
+  if (strpos($url,'resource-locator') !== false) {//in the resource locator
+    $where = 'resource';
+  }
+  
+  if (strpos($url,'assistance') !== false && strpos($url,'professional') == false) {//in the resource locator
+    $where = 'assistance';
+  }
+
+  if (strpos($url,'faq') !== false) {//in the resource locator
+    $where = 'faq';
+  }
+
+  if (strpos($url,'contact') !== false) {//in the resource locator
+    $where = 'contact';
+  }
+
+  if (strpos($url,'feedback') !== false) {//in the resource locator
+    $where = 'feedback';
+  }
+  if (strpos($url,'node') !== false) {//in the resource locator
+    $where = 'node';
+  }
+  if (strpos($url,'disclaimer') !== false || strpos($url,'privacy') !== false || strpos($url,'accessibility') !== false || strpos($url,'data-policy') !== false || strpos($url,'linking-policy') !== false) {//in the resource locator
+    $where = 'other';
+  }
+
+  return $where;
+  //return $url;
+}
+
+
+function ccsf_get_start_url(){
+  $url = url($_GET['q']);
+
+  $where='home';
+
+  if (strpos($url,'create-a-plan') !== false ) {//on the home page
+    $where = 'plan';
+  }
+  if (strpos($url,'choose-a-structure') !== false ) {//on the home page
+    $where = 'structure';
+  }
+  if (strpos($url,'register-your-business') !== false ) {//on the home page
+    $where = 'register';
+  }
+  if (strpos($url,'choose-a-name') !== false ) {//on the home page
+    $where = 'name';
+  }
+  if (strpos($url,'location-options') !== false ) {//on the home page
+    if(strpos($url,'zoning')!== false){
+      $where = 'zoning';
+    }elseif(strpos($url,'ada')){
+      $where = 'ada';
+    }else{
+      $where = 'location';
+    }
+    
+  }
+  if (strpos($url,'hire-employees') !== false ) {//on the home page
+    $where = 'hire';
+  }
+  if (strpos($url,'financial-options') !== false ) {//on the home page
+    $where = 'financial';
+  }
+
+  return $where;
+
+}

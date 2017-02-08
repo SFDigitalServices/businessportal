@@ -1,0 +1,36 @@
+name = CCSF Scripts
+description = Various scripts for site wide features and interactions
+core = 7.x
+
+scripts[] = js/modernizr.custom.71965.js
+scripts[] = js/browser_check.js
+scripts[] = js/jquery.migrate.js
+scripts[] = js/jquery-ui.min.js
+scripts[] = js/jquery.backstretch.min.js
+scripts[] = js/splashStretcher.js
+
+scripts[] = js/faq.js
+
+scripts[] = js/search_bar.js
+scripts[] = js/in_page_link.js
+scripts[] = js/jquery.infinitescroll.min.js
+scripts[] = js/infinitescroll.js
+scripts[] = js/guides.js
+scripts[] = js/isotope.js
+scripts[] = js/isotope_layout.js
+scripts[] = js/recource_locator.js
+scripts[] = js/nav.js
+scripts[] = js/smooth_scroll.js
+scripts[] = js/bottom_nav.js
+scripts[] = js/nav_highlight.js
+scripts[] = js/mobile_nav.js
+scripts[] = js/sidebarNav.js
+scripts[] = js/permit_resource_mobile.js
+scripts[] = js/cleanUp_urls.js
+scripts[] = js/ccsf_sidebars.js
+scripts[] = js/featured_fix.js
+scripts[] = js/jquery.browser.min.js
+scripts[] = js/jquery.tipsy.js
+scripts[] = js/tool_tips.js
+
+stylesheets[all][] = css/tipsy.css

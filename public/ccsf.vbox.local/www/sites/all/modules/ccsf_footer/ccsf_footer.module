@@ -1,0 +1,60 @@
+<?php 
+/**
+*
+* Creates a block for the footer, 
+* Holds code for a twitter feed and social links 
+*
+*/
+
+/*
+* implements hook_block_info();
+*/
+function ccsf_footer_block_info(){
+	$blocks=array();
+
+	$blocks['ccsf_footer_block']=array(//this is the delta in hook_block_view()
+		'info'=>t('CCSF Footer Contents'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);	
+	return $blocks;
+}
+
+
+
+/*
+* implements hook_theme();
+*/
+function ccsf_footer_theme(){
+	return array(
+		'ccsf_footer_theme'=>array(
+			'variables'=>array(
+				'footer'=>NULL,
+			),
+			'template'=>'ccsf_footer_block',
+		),
+	);
+}
+
+/*
+* implements hook_block_view();
+*/
+function ccsf_footer_block_view($delta=''){
+	$footer = '';
+	$block = array();
+
+	switch($delta){
+		case 'ccsf_footer_block':
+			$block['content']=theme('ccsf_footer_theme');
+			break;
+	}
+	return $block;
+}
+
+function ccsf_footer_get_type(){
+	$node = menu_get_object();
+	if ($node && $node->nid) {
+  // You have a valid node to work with.
+		//dpm($node);
+		return $node;
+	}
+}

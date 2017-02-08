@@ -1,0 +1,80 @@
+#kit-admin-permits,
+#kit-admin-related-documents,
+#kit-admin-journey-map,
+#new-name-wrap,
+#new-info-wrap{
+	float:left;
+	clear:both;
+	width:100%;
+}
+#edit-explore{
+	clear:both;
+}
+.starter-kit-node-entry{
+	border-bottom:1px solid #DBDBDB;
+	margin:0 0 0 0;
+}
+.starter-kit-node-entry p{
+	float:left;
+}
+.starter-kit-node-entry input{
+	float:right;
+	margin:8px 0 0 0;
+}
+.starter-kit-add-node{
+	margin:15px 0 0 0;
+}
+.starter-kit-add-node div{
+	float:left;
+}
+.starter-kit-add-node .form-submit{
+	float:left;
+	margin:20px 0 0 20px;
+}
+.starter-kit-node-entry .kit-link{
+	float:right;
+	margin:14px 0 0 20px;
+}
+.item-checkbox{
+	float:left;
+	margin:10px 10px 0 0 ;
+}
+#new-button{
+	margin:10px 0 0 0;
+	height:30px;
+}
+#new-name-wrap div{
+	float:left;
+}
+#new-name-wrap #edit-name-input{
+	float:left;
+	margin:20px 0 0 20px;
+	
+}
+#new-name-wrap h2{
+	float:left;
+	margin:4px 20px 0 0;
+	text-decoration: underline;
+}
+#delete-buttons input{
+	float:left;
+}
+#delete-buttons p{
+	float:left;
+	margin:5px 0 0 20px;
+}
+.rearrange-title{
+	margin:0;
+}
+#starter-kit-select-all:hover{
+	cursor:pointer;
+}
+#starter-kit-deselect-all:hover{
+	cursor:pointer;
+}
+#starter-kit-download-selected:hover{
+	cursor:pointer;
+}
+#starter-kit-add-selected:hover{
+	cursor:pointer;
+}

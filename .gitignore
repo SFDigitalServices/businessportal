@@ -1,0 +1,17 @@
+.DS_Store
+.vagrant
+.sass-cache
+.idea
+.viminfo
+.mysql_history
+.bash_history
+.config
+.ssh
+.drush
+public/ccsf.vbox.local/www/sites/default/files/ctools
+/nbproject/private/
+nbproject/project.properties
+nbproject/project.xml
+public/ccsf.vbox.local/www/nbproject/private/private.xml
+.netrwhist
+ccsf.css.map

@@ -1,0 +1,34 @@
+// _assistance.scss
+
+.assistance-banner-wrap{
+	height:520px;
+	width:100%;
+	background-color:$grey-six;
+
+	.assistance-banner{
+		@include max-width;
+	}
+}
+
+.assistance-options-wrap{
+	width:100%;
+	.assistance-options{
+		@include max-width;
+		height:600px;
+	}
+}
+
+.assistance-options-wrap:before{
+	@include arrow;
+	border-top-color:$grey-six ;
+}
+
+.assistance-locate-wrap{
+	width:100%;
+	background-color:$grey-six;
+	min-height:520px;
+	
+	.assistance-locate{
+		@include max-width;
+	}
+}

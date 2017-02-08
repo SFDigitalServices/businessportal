@@ -1,0 +1,69 @@
+// _template-5.scss
+.t5-wrap{
+	h2{
+		@include font-droid-6;
+		margin:0 0 25px 0;
+	}
+	h3{
+		@include font-droid-7;
+		margin:55px 0 0 0;
+	}
+	h4{
+		@include font-helv-11;
+		margin:0;
+		padding:0 0 55px 0;
+		//border-bottom:1px solid;
+	}
+	p{
+		@include font-helv-3;
+	}
+	.form-item{
+		margin:35px 0 2px 0;
+	}
+	.form-item span{
+		color:$orange !important;
+		@include font-helv-12;
+
+	}
+	.panels-flexible-column-inside{
+		padding:0;
+	}
+}
+///// Banner Section /////
+.t5-left-menu{
+	float:none;
+	width:100%;
+	height:520px;
+}
+.t5-banner{
+	position:relative;
+	height:520px;
+	background:blue;
+}
+///// Left Sidebar /////
+.t5-menu-wrap{
+	width:$sidebarwidth;
+	float:left;
+	padding:83px 0 0 0 !important;
+
+	h2{
+		@include font-helv-13;
+	}
+	.menu li{
+		margin:0 0 10px 0;
+	}
+}
+///// Main Section /////
+.panels-flexible-column-t5-wrap-main{
+	@include max-width;
+	padding:80px 0 0 0 !important;
+}
+.t5-main-wrap{
+	width:$contentwidth;
+	float:right;
+}
+///// Featured Section /////
+.featured-wrap{
+	width:$contentwidth;
+	float:right;
+}

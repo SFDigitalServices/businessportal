@@ -1,0 +1,9 @@
+name = Permit and Licence Locator Form
+description = Themes the form for the Permit and Licence Locator.
+core = 7.x
+
+
+scripts[] = js/permit_form.js
+stylesheets[all][] = css/permit_form.css
+
+

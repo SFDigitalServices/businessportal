@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Salesforce test page</title>
+    <!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+
+</head>
+
+<body>
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->
+
+<form action="https://www.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+
+<input type=hidden name="orgid" value="00D400000009pDc">
+<input type=hidden name="retURL" value="http://104.131.142.146//salesforce.html?msg=done">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+<!--  these lines if you wish to test in debug mode.                          -->
+<!--  <input type="hidden" name="debug" value=1>                              -->
+<!--  <input type="hidden" name="debugEmail" value="jane.gong@sfgov.org">     -->
+<!--  ----------------------------------------------------------------------  -->
+
+<label for="name" id="name_pcl">Contact Name</label><input  aria-labelledby="name_pcl" id="name" maxlength="80" name="name" size="20" type="text" /><br>
+
+<label for="email" id="email_pcl">Email</label><input  aria-labelledby="email_pcl" id="email" maxlength="80" name="email" size="20" type="text" /><br>
+
+<label for="phone" id="phone_pcl">Phone</label><input  aria-labelledby="phone_pcl" id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+
+Best way to reach me::<select  id="00N40000002qX56" name="00N40000002qX56" title="Best way to reach me:"><option value="">--None--</option><option value="Email">Email</option>
+<option value="Telephone">Telephone</option>
+</select><br>
+
+Subject::<select  id="00N40000002qX4h" name="00N40000002qX4h" title="Subject:"><option value="">--None--</option><option value="I want to schedule an appointment with a business counselor.">I want to schedule an appointment with a business counselor.</option>
+<option value="I have a question that can be answered over email.">I have a question that can be answered over email.</option>
+<option value="I am experiencing technical issues with the site.">I am experiencing technical issues with the site.</option>
+</select><br>
+
+Message::<textarea  aria-labelledby="00N40000002qX4r_pcl" id="00N40000002qX4r" name="00N40000002qX4r" type="text" wrap="soft"></textarea><br>
+
+<input type="hidden"  id="external" name="external" value="1" /><br>
+
+<input type="submit" name="submit">
+
+</form>
+
+</body>
+</html>

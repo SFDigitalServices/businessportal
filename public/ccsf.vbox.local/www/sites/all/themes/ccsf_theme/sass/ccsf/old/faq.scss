@@ -1,0 +1,37 @@
+//_faq.scss
+.faq-section{
+	.faq-item{
+		.field-name-field-heading{
+			color:red;
+		}
+	}
+}
+
+.faq-banner-wrap{
+	
+	/*
+	.field-name-field-subtext-bold{
+		@include max-width;
+	}
+	.field-name-field-subtext-normal{
+		@include max-width;
+	}
+	*/
+}
+
+.faq-section-wrap{
+	@include max-width;
+
+	.faq-section{
+		float:none;
+	}
+
+	.panel-pane{
+		width:$contentwidth;
+		float:right;
+	}
+}
+.pane-menu-menu-faq-menu{
+	width:$sidebarwidth !important;
+	float:left !important;
+}

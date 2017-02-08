@@ -1,0 +1,10 @@
+name = Starter Kit
+description = Currate a Starterkit of Downloadable items
+core = 7.x
+
+dependencis[] = basic cart
+
+scripts[] = js/starter_kit.js
+
+stylesheets[all][] = css/starter_kit.css
+

@@ -1,0 +1,108 @@
+/* Variables */
+@import 'variables';
+
+/* Mixins */
+@import 'mixins';
+
+/* Main Styles */
+@import 'main_styles';
+
+/* Home */
+@import 'home';
+
+/* Header */
+@import 'header';
+
+/* Footer */
+@import 'footer';
+
+/* Map */
+//@import 'map';
+
+/* Search */
+@import 'search';
+
+/* Permit */
+@import 'permit';
+
+/* Doc */
+@import 'document';
+
+/* Department */
+@import 'department';
+
+/* Futurescape */
+@import 'futurescape';
+
+/* My folder widget */
+@import 'my_folder_widget';
+
+/* Tips Section */
+@import 'tips_section';
+
+/* Template 2 
+*	-Start a buisiness
+*	-Manage your business
+*	-Grow your business
+*/ // 
+@import 'template-2';
+
+/* Template 3
+*	-All Starter Kits
+*/
+@import 'template-3';
+
+/* Template 4
+* -individual starter kit
+*/
+@import 'template-4';
+
+/* Template 5
+*	-All subpages for 'start a business', 'manage your business', 'grow your business'
+*/
+@import 'template-5';
+
+/* Template 6
+*	-Permit Locator
+*/
+@import 'template-6';
+
+/* Template 6.2
+*	-Resouce Locator
+*/
+@import 'template-6-2';
+
+/* Template 7
+*/
+
+/* Template 8
+*/
+
+/* Template 9
+*	-Get Assistance
+*/
+@import 'template-9';
+
+/* Template 10
+*	-FAQ
+*/
+@import 'template-10';
+
+/* Template 12
+*	-Contact Us
+*/
+@import 'template-12';
+/* Template 13
+*	-My Folder
+*/
+@import 'template-13';
+
+#edit-keys::-ms-clear, 
+.permit-business-types, .permit-related-items, 
+#edit-keys::-ms-clear, 
+#edit-search-api-views-fulltext::-ms-clear {
+  display: none;
+}
+
+.messages--error {display: none;}
+body.logged-in .messages--error {display: block;}

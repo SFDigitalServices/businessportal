@@ -1,0 +1,63 @@
+<?php
+/**
+*
+* Creates a block for the footer, 
+* Holds code for a twitter feed and social links 
+*
+*/
+
+/*
+* implements hook_block_info();
+*/
+function ccsf_contact_block_info(){
+	$blocks=array();
+
+	$blocks['ccsf_contact_us_block']=array(//this is the delta in hook_block_view()
+		'info'=>t('CCSF Contact Us Form'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);	
+	$blocks['ccsf_feedback_block']=array(
+		'info'=>t('CCSF Feedback Form'),
+		'cache'=>DRUPAL_CACHE_GLOBAL,
+	);
+	return $blocks;
+}
+
+
+
+/*
+* implements hook_theme();
+*/
+function ccsf_contact_theme(){
+	return array(
+		'ccsf_contact_us_theme'=>array(
+			'variables'=>array(
+				'footer'=>NULL,
+			),
+			'template'=>'ccsf_contact_us',
+		),
+		'ccsf_feedback_theme'=>array(
+			'variables'=>array(
+				'feedback'=>NULL,
+			),
+			'template'=>'ccsf_contact_feedback',
+		),
+	);
+}
+
+/*
+* implements hook_block_view();
+*/
+function ccsf_contact_block_view($delta=''){
+	$footer = '';
+	$block = array();
+
+	switch($delta){
+		case 'ccsf_contact_us_block':
+			$block['content']=theme('ccsf_contact_us_theme');
+			break;
+		case 'ccsf_feedback_block':
+			$block['content']=theme('ccsf_feedback_theme');
+	}
+	return $block;
+}

@@ -1,0 +1,82 @@
+//_starter_kits.scss
+
+.starter-kits-splash-wrap{
+
+}
+
+/* Starter Kit Heading */
+.starter-kit-heading-wrap{
+	@include max-width;
+	min-height:450px;
+}
+.starter-kit-heading{
+	
+	text-align:center;
+
+	.field-name-field-heading{
+		@include font-droid-1;
+		margin:90px 0 0 0;
+	}
+	.field-name-body{
+		@include font-helv-1;
+		width:75%;
+		margin:20px auto 90px auto;
+	}
+}
+
+.kits-wrap{
+	background-color:$grey-six;
+	.kits{
+		@include max-width;
+
+		.inside{
+			padding-top:80px;
+		}
+	}
+}
+
+.kits:before{
+	@include arrow;
+}
+
+.kits{
+	@include max-width;
+
+	.panel-pane{
+		width:30%;
+		float:left;
+		min-height:550px;
+		margin:0 1.666% 0 1.666%;
+	}
+
+	.field-name-field-img{
+		img{
+			width:100%;
+		}
+	}
+	.field-name-field-heading{
+		@include font-droid-4;
+		margin:20px 0 0 0;
+	}
+	.field-name-body{
+		@include font-helv-3;
+		margin:15px 0 0 0;
+	}
+	.field-name-field-link{
+		@include font-helv-10;
+		margin:15px 0 0 0;
+		a{
+			float:left;
+		}
+	}
+	.field-name-field-link:after{
+		@include link-arrow($blue,2px);
+	}
+}
+
+.starter-kits{
+	.tips-wrap{
+		@include max-width;
+		min-height:700px;
+	}
+}
